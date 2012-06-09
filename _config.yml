@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://wikimo.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Wiki's blog
+subtitle: wiki.each do |web| … !end.
+author: Wiki.M
 simple_search: http://google.com/search
 description:
 
