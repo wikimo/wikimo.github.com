@@ -1,0 +1,9 @@
+---
+layout: post
+title: '关于母亲节'
+date: 2010-5-9
+wordpress_id: 66
+permalink: /blogs/66
+comments: true
+---
+今天是母亲节，祝福天下所有妈妈母亲节快乐，祝福老妈一生平安，开心……

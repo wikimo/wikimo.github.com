@@ -1,0 +1,40 @@
+---
+layout: post
+title: 'phpwind 频道页面加载不同头部'
+date: 2010-9-2
+wordpress_id: 288
+permalink: /blogs/288
+comments: true
+---
+效果：需要频道页面加载不同与门户页面的头部效果；
+
+修改：require/common.php
+[php]
+function getAreaSrcTpl($template,$EXT='htm'){
+	global $db_tplstyle,$area_indextpl;
+
+	if ($template=='header' || $template=='footer') {
+		
+		#加入文件判断
+		 if(file_exists(M_P.&quot;themes/$db_tplstyle/$template.$EXT&quot;)){
+			$srcTpl = M_P.&quot;themes/$db_tplstyle/$template.$EXT&quot;;
+		 }else{
+			$srcTpl = M_P.&quot;themes/$area_indextpl/$template.$EXT&quot;;
+		 }
+
+	} else {
+		$srcTpl = M_P.&quot;themes/$db_tplstyle/$template.$EXT&quot;;
+	}
+
+	if (!file_exists($srcTpl)) {
+		global $area_indextpl;
+		if ($area_indextpl!='default' &amp;&amp; file_exists(M_P.&quot;themes/$area_indextpl/$template.$EXT&quot;)) {
+			$srcTpl = M_P.&quot;themes/$area_indextpl/$template.$EXT&quot;;
+		} else {
+			$srcTpl = M_P.&quot;themes/default/$template.$EXT&quot;;
+		}
+	}
+	
+	return $srcTpl;
+}
+[/php] 

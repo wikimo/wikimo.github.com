@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'phpwind 回复与帖子管理无法正常显示'
+date: 2010-8-29
+wordpress_id: 277
+permalink: /blogs/277
+comments: true
+---
+现象：如题描述，回复帖子后，回复不能显示；帖子管理后，比如删除帖子后，在帖子列表还有显示；
+原因：经过分析判断后初步断定应该是数据缓存的关系；
+解法：进入后台查看，被同事开启了memcached，关闭下就OK了。
+
+PS：版本phpwind sp3，对于memcached的支持形同虚设，没有实质性意义。

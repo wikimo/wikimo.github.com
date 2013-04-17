@@ -1,0 +1,9 @@
+---
+layout: post
+title: ' Allowed memory size of 134217728 bytes exhausted'
+date: 2010-5-31
+wordpress_id: 112
+permalink: /blogs/112
+comments: true
+---
+查找php.ini配置文件，修改memory_limit = 256M 看看效果。

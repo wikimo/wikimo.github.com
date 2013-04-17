@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'PHP XML Library 分享一个不错的PHP XML操作类'
+date: 2011-5-27
+wordpress_id: 540
+permalink: /blogs/540
+comments: true
+---
+相关详情地址：<a href="http://keithdevens.com/software/phpxml">php xml lib</a>
+具体使用方面的一些东西可以参考：<a href="http://blog.s135.com/post/253/">PHP XML Library：一个不错的PHP XML操作类</a>

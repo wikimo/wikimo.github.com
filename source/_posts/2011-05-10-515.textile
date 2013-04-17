@@ -1,0 +1,31 @@
+---
+layout: post
+title: 'ie下a标签背景图边框问题'
+date: 2011-5-10
+wordpress_id: 515
+permalink: /blogs/515
+comments: true
+---
+[html]
+&lt;ul&gt;
+   &lt;li&gt;&lt;a href=&quot;&quot;&gt;xxxx&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;&quot;&gt;xxxx&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;&quot;&gt;xxxx&lt;/a&gt;&lt;/li&gt;
+&lt;ul&gt;
+[/html]
+
+以上代码，描述一个导航条，需要设置导航条分割线，设置了a标签的背景，在是在IE下，背景图会有边框线，如图：
+<a href="http://www.ihtml6.com/wp-content/uploads/2011/05/1.jpg"><img src="http://www.ihtml6.com/wp-content/uploads/2011/05/1.jpg" alt="" title="1" width="164" height="169" class="alignleft size-full wp-image-516" /></a>
+
+样式的写法
+[css]
+ul li a{background:url('nav-li-bg.pnr') no-repeat right center;}
+[/css]
+在FF，Chrome下正常，IE系会有背景边框。
+
+解决方法，
+[css]
+ul li{background:url('nav-li-bg.pnr') no-repeat right center;}
+[/css]
+
+在li标签下定义背景图

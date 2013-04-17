@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'phpwind悬赏贴设置'
+date: 2011-3-4
+wordpress_id: 459
+permalink: /blogs/459
+comments: true
+---
+phpwind8在发布悬赏贴之前，需要在后台相应的板块中进行积分设置，否则会提示积分不足。通过官网搜索不解，于是阅读源码，发现需要在后台》相应的板块》有个“积分相关“选项进行设置，这样前台发帖就能看到相关的积分选项，见图
+<a href="http://blog.ai0573.com/wp-content/uploads/2011/03/2011-03-04-17-23-31.jpg"><img class="alignleft size-medium wp-image-458" title="2011-03-04 17 23 31" src="http://blog.ai0573.com/wp-content/uploads/2011/03/2011-03-04-17-23-31-300x71.jpg" alt="" width="300" height="71" /></a>

@@ -1,0 +1,19 @@
+---
+layout: post
+title: 'rails图片上传插件Paperclip'
+date: 2010-7-28
+wordpress_id: 222
+permalink: /blogs/222
+comments: true
+---
+paperclip是一个rails图片上传十分方便的插件，可以一次上传生成不同尺寸的图片，对于上传目录之类的也可以随心所欲进行设置。paperclip可能还需要借助ImageMagick。关于paperclip的使用网上已经有很多资源了，本人在此将这些资源进行收集汇总。
+
+插件项目地址：<a href="http://github.com/thoughtbot/paperclip">http://github.com/thoughtbot/paperclip</a>
+
+Javaeye上比较不错的一个教程，按上面提示基本能成：<a href="http://danny-chiu.javaeye.com/blog/378775">http://danny-chiu.javaeye.com/blog/378775</a>
+
+又一个示例教程：<a href="http://huacnlee.com/blog/rails-plugin-paperclip-for-image-upload">http://huacnlee.com/blog/rails-plugin-paperclip-for-image-upload</a>
+
+ImageMagick：<a href="http://www.imagemagick.org/script/index.php">http://www.imagemagick.org/script/index.php</a>
+
+ImageMagick中文站：<a href="http://www.imagemagick.com.cn/">http://www.imagemagick.com.cn/</a>

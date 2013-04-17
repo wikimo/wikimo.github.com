@@ -1,0 +1,18 @@
+---
+layout: post
+title: 'thinkphp模板下的变量转义'
+date: 2011-3-4
+wordpress_id: 455
+permalink: /blogs/455
+comments: true
+---
+问题描述：当在模板中使用的一个变量含有转义符的时候可能会被屏蔽掉
+例：
+[php]
+$html = &quot;&lt;span style=\'font-size:12px\'&gt;测试测试测试...&lt;/span&gt;&quot;;
+[/php]
+当读取$html变量的时候会变成
+[html]
+&lt;span style=''&gt;测试测试测试...&lt;/span&gt;
+[/html]
+解决方法：在模板中使用变量前利用stripcslashes函数处理下，就解决了。

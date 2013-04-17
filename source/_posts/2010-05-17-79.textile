@@ -1,0 +1,88 @@
+---
+layout: post
+title: '基于rails on ruby 的用户登陆示例'
+date: 2010-5-17
+wordpress_id: 79
+permalink: /blogs/79
+comments: true
+---
+因为网上找了许多资料，rails的资料可能国内不多，所以就打算自己写一个，帮助和我一样的初学者借鉴学习用。
+
+一、功能描述：前台用户登陆，成功后跳转至后台用户管理，并且可以管理用户。
+
+（1）基本的CRUD操作，利用rails可以自动生成；
+
+（2）通过session验证是否登陆；
+
+（3）用户密码MD5加密,也可以用<span style="font-family: 'Times New Roman'; font-size: 14px;"><span style="mso-spacerun: yes;"> </span>Digest::SHA1.hexdigest 进行加密，不过可能需要引入相关的模块<span style="font-family: Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif; font-size: 13px;">require 'digest/sha1'；</span></span>
+
+（4）前端提交验证，rails自带；
+
+二、基本操作思路
+<div id="_mcePaste">(1) rails login -d mysql  #创建一个基于mysql数据库的login项目</div>
+<div id="_mcePaste">(2)cd login进入项目录入</div>
+<div id="_mcePaste">(3)修改数据库配置文件database.yml</div>
+<div id="_mcePaste">(4)rake db:create 创建数据库</div>
+<div id="_mcePaste">(5)script/server scaffold User user:string pwd:string   #创建User CRUD</div>
+<div id="_mcePaste">(6)rake db:migrate 运行数据库迁移任务</div>
+<div id="_mcePaste">(7) script/server 运行服务器</div>
+<div id="_mcePaste">(8)访问项目http://127.0.0.1/users</div>
+<div id="_mcePaste">(9)添加几个测试数据</div>
+<div id="_mcePaste">(10)script/generate controller Admin index login #创建登陆管理控制器</div>
+<div id="_mcePaste">(11)修改login方法,修改index.html.erb模板(如果没有则手动添加)</div>
+<div id="_mcePaste">(12)访问http://127.0.0.1/admin 进行登陆测试</div>
+<div id="_mcePaste">(13) 修改模型user.rb加入验证方法及用户密码加密</div>
+<div id="_mcePaste">(14)添加字段mail,创建迁移任务，并修改相应的模板</div>
+<div id="_mcePaste">script/generate migration add_column_to_user mail:string</div>
+<div id="_mcePaste">rake db:migrate</div>
+效果预览：
+
+<a href="http://www.ihtml6.com/wp-content/uploads/2010/05/2010-05-17-08-51-49.jpg"><img class="alignnone size-full wp-image-80" title="2010-05-17 08 51 49" src="http://www.ihtml6.com/wp-content/uploads/2010/05/2010-05-17-08-51-49.jpg" alt="" width="320" height="344" /></a>
+
+部分代码分析：
+<blockquote>#用户登陆<span style="white-space: pre;"> </span>users_controller.rb
+
+def login
+
+<span style="white-space: pre;"> </span>user = params[:user][:username]#获取用户名
+
+<span style="white-space: pre;"> </span>pwd = Digest::MD5.hexdigest(params[:user][:password])#获取用户名密码并进行MD5加密
+
+<span style="white-space: pre;"> </span>
+
+<span style="white-space: pre;"> </span>@user = User.find(:all,:conditions =&gt;['user = ? and pwd = ?',user,pwd])#根据用户名密码查找用户
+
+<span style="white-space: pre;"> </span>
+
+<span style="white-space: pre;"> </span>unless @user.empty?
+
+<span style="white-space: pre;"> </span>session[:userid] = @user[0].id #登陆成功后，记录用户session
+
+<span style="white-space: pre;"> </span> flash[:notice] = '登陆成功.'
+
+<span style="white-space: pre;"> </span>redirect_to :controller =&gt; "users",:action =&gt; "index"
+
+<span style="white-space: pre;"> </span>else
+
+<span style="white-space: pre;"> </span> flash[:notice] = '登陆失败.'
+
+<span style="white-space: pre;"> </span> redirect_to :action =&gt; 'index'
+
+<span style="white-space: pre;"> </span>end
+
+end
+
+#模型层user.rb
+
+def  password=(password)
+
+<span style="white-space: pre;"> </span>@password = password
+
+<span style="white-space: pre;"> </span>self.pwd = Digest::MD5.hexdigest(self.password) #后台更新或者创建用户时MD5加密密码
+
+<span style="white-space: pre;"> </span>end</blockquote>
+示例代码下载：<a href="http://www.ihtml6.com/wp-content/uploads/2010/05/login.zip">http://www.ihtml6.com/wp-content/uploads/2010/05/login.zip</a>
+
+参考：<a href="http://blog.csdn.net/kunshan_shenbin/archive/2009/05/17/4195082.aspx">http://blog.csdn.net/kunshan_shenbin/archive/2009/05/17/4195082.aspx</a>
+
+《应用rails进行敏捷web开发 第三版》

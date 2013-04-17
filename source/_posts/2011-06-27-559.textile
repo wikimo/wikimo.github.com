@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'vsftpd的安装设置，做个笔记'
+date: 2011-6-27
+wordpress_id: 559
+permalink: /blogs/559
+comments: true
+---
+vsftpd相关的一些安装配置；
+1.<a href="http://man.ddvip.com/linux/debian/vsftpd/vsftpd.conf-7.html">http://man.ddvip.com/linux/debian/vsftpd/vsftpd.conf-7.html</a>
+2.<a href="http://wiki.ubuntu.org.cn/Vsftpd%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE">http://wiki.ubuntu.org.cn/Vsftpd%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE</a>
+3.<a href="http://www.linuxsir.org/main/node/152">http://www.linuxsir.org/main/node/152</a>
+
+基本这参考这3篇文章就可以了，再不行的可以去搜IT播吧的相关视频

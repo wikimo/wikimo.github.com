@@ -1,0 +1,45 @@
+---
+layout: post
+title: '说说linux下rsync的使用'
+date: 2010-12-2
+wordpress_id: 405
+permalink: /blogs/405
+comments: true
+---
+rsync 简介：这个东西是用来同步文件的，比如有两台服务器，服务器A、服务器B，A上面有文件夹/htdocs/wwwA，在B机器上有个/htdocs/wwwB，现在需要保持wwwA与wwwB文件一致，rsync做的就是这个工作，概况来说就是同步文件，备份文件用的。
+
+安装：安装很简单，我使用编译安装，3步，configure，make,make install
+
+启动：比如rsync安装在/d/server/rsync下，那么可以通过
+
+/b/server/rsync/bin/rsync --daemon --config=/b/server/rsync/bin/rsync/rsyncd.conf 启动
+
+其中rsyncd.conf是配置文件
+
+重启：Linux 下 ps -aux  | grep rsync 查看下进程pid 然后 kill pid杀掉进程就行了。
+
+文件同步命令：rsync -vzrtopg --progress --delete  rsync@192.168.1.100::www /htdocs/wwwB/ 就会进行文件同步了。
+
+rsyncd.conf配置文件示例：
+[c]
+#rsyncd.conf
+uid = rsync                         
+gid = www                        
+use chroot = no              
+max connections = 4       
+
+#进程文件，锁，以及同步日志
+pid file = /d/server/rsync-3.0.7/var/run/rsyncd.pid        
+lock file = /d/server/rsync-3.0.7/var/run/rsyncd.lock       
+log file = /d/server/rsync-3.0.7/var/log/rsyncd.log        
+
+#指定需要被同步的文件模块
+[www]
+path = /htdocs/wwwA   
+read only = true
+auth users = rsync
+#认证文件，两台机器在通讯的时候认证用的
+#新建该文件，在此文件中写入“用户名:密码” 例：&quot; rsync:www &quot; 保存即可
+#可能需要 chmod 此文件600权限
+secrets file = /d/server/rsync-3.0.7/rsync.pas 
+[/c] 

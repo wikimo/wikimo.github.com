@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'phpwind 版块批量删除工具'
+date: 2010-11-26
+wordpress_id: 401
+permalink: /blogs/401
+comments: true
+---
+phpiwnd8后台的版块删除只能一个个删除，没有批量删除工具，对于论坛数据合并转换的时候可能需要用到批量删除版块，手动一个个删除比较麻烦，所以想偷懒下，写个小工具用用。针对phpwind8写的，8以前的版块修改下应该也适用。
+
+思路：思路很简单，主要参考了admin/setforum.php文件
+
+下载地址：<a href="http://www.wenotes.com/wp-content/uploads/2010/11/delforums.zip">http://www.ihtml6.com/wp-content/uploads/2010/11/delforums.zip</a>
+
+下载解压，覆盖至根目录，执行http://www.xxx.com/delforums.php即可，使用完毕后记得删除文件。

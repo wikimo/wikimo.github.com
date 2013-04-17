@@ -1,0 +1,26 @@
+---
+layout: post
+title: 'PHP递归无返回值问题'
+date: 2011-11-23
+wordpress_id: 592
+permalink: /blogs/592
+comments: true
+---
+可以参考下http://developer.51cto.com/art/200911/163539.htm 这篇文章，可能就是粗看下没啥问题，但是递归的时候没有进行return返回
+贴个例子，category为分类表，catid为主角，pid，为父键，level为层次，方法的作用就是根据分类catid，查找它最父级的catid
+{% codeblock lang:php%}
+<?php
+function get_cat_id($catid){
+	$sql = "select catid,pid,level from modoer_category where catid=$catid";
+	$query = mysql_query($sql);
+	$row = mysql_fetch_array($query);
+
+	if($row['pid'] == '0'){//当查到一级分类时
+		return $row['catid'];
+	}else{//当没有查到时，进行递归
+                //这里没写return的时候，就一直没返回值
+		return get_cat_id($row['pid']);
+	}
+}
+?>
+{% endcodeblock %} 

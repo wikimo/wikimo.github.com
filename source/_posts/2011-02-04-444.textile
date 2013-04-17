@@ -1,0 +1,11 @@
+---
+layout: post
+title: '电信数字电视、宽带共享的方法'
+date: 2011-2-4
+wordpress_id: 444
+permalink: /blogs/444
+comments: true
+---
+最近家里装了电信的数字电视，但只有一个ADSL Modem，因为数字电视机顶盒也是通过PPPOE的方式连接的，而且账号和宽带账号不一致。所以在同一时刻两者只能用一个，实在有些不爽。咨询10000，解决方案是将路由器自动拨号取消，然后将数字电视连接线连接至路由器，宽带上网的时候手工拨号就可以了，个人感觉这种方案好像不行，而且手工拨号麻烦，于是就用交换机解决了问题。家用交换机很便宜的，普通用用的50块也不到，就能解决数字电视和宽带共享的效果。
+详细部署方案很简单，见图：
+<a href="http://www.ihtml6.com/wp-content/uploads/2011/02/2011-02-04-09-31-43.jpg"><img src="http://www.ihtml6.com/wp-content/uploads/2011/02/2011-02-04-09-31-43.jpg" alt="" title="2011-02-04 09 31 43" width="603" height="415" class="alignleft size-full wp-image-445" /></a>

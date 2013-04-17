@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://wikimo.github.com
-title: Wiki's blog
+title: Wiki's development log
 subtitle: wiki.each do |web| … !end.
 author: Wiki.M
 simple_search: http://google.com/search
-description:
+description: 关注互联网，关注社区运营，关注开源社区
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in

@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'C#将远程返回XML写入本地的方法'
+date: 2010-6-30
+wordpress_id: 167
+permalink: /blogs/167
+comments: true
+---
+需求：通过远程地址，比如：http://www.xxx.com/api/data.xml返回xml数据，需要将该数据写入本地
+
+方法：
+{% codeblock %}XmlDocument xmldoc = new XmlDocument();
+
+xmldoc.Load(remoteXmlPath);//remoteXmlPath远程地址 ,例：http://www.xxx.com/api/data.xml
+
+xmldoc.Save(localXmlPath);//localXmlPath本地路径
+{% endcodeblock %}

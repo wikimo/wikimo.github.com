@@ -1,0 +1,15 @@
+---
+layout: post
+title: '关于浏览器提示站点恶意代码及警告接触的方法'
+date: 2010-7-2
+wordpress_id: 177
+permalink: /blogs/177
+comments: true
+---
+访问：<a href="https://www.google.com/accounts/ServiceLogin?service=sitemaps&amp;passive=true&amp;nui=1&amp;continue=https://www.google.com/webmasters/tools/?hl%3Dzh_CN&amp;followup=https://www.google.com/webmasters/tools/?hl%3Dzh_CN&amp;hl=zh-CN">https://www.google.com/accounts/ServiceLogin?service=sitemaps&amp;passive=true&amp;nui=1&amp;continue=https://www.google.com/webmasters/tools/?hl%3Dzh_CN&amp;followup=https://www.google.com/webmasters/tools/?hl%3Dzh_CN&amp;hl=zh-CN</a>
+
+可以用gmail登陆，
+
+<a href="http://www.wenotes.com/wp-content/uploads/2010/07/2010-07-02-08-41-53副本.jpg"><img class="alignnone size-full wp-image-178" title="2010-07-02 08 41 53副本" src="http://www.wenotes.com/wp-content/uploads/2010/07/2010-07-02-08-41-53副本.jpg" alt="" width="507" height="378" /></a>
+
+登陆后，点击“添加网站”然后进行验证，可能需要上传某些文件到网站根目录下。基本上第二天就OK了。

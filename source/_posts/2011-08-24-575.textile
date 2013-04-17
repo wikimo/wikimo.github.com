@@ -1,0 +1,30 @@
+---
+layout: post
+title: 'rails select使用'
+date: 2011-8-24
+wordpress_id: 575
+permalink: /blogs/575
+comments: true
+---
+关于rails下select的使用，比如cat为父类，subcat为子类，新建，更新subcat需要更新父类cat在subcat中有个字段cat_id是与父类建立关系的，在模板页中使用方式如下
+[html]
+
+&lt;%= select :subcat,:cat_id,  Cat.all.collect {|c| [ c.name, c.id ] }, { :selected =&gt; @subcat.cat_id.to_i }%&gt;
+
+[/html]
+生成的HTML代码为
+[html]
+&lt;select id=&quot;subcat_cat_id&quot; name=&quot;subcat[cat_id]&quot;&gt;
+&lt;option value=&quot;1&quot;&gt;汽车&lt;/option&gt; 
+&lt;option value=&quot;2&quot;&gt;房产&lt;/option&gt; 
+&lt;option value=&quot;3&quot;&gt;装修&lt;/option&gt; 
+&lt;option value=&quot;4&quot;&gt;婚嫁&lt;/option&gt; 
+&lt;option value=&quot;5&quot;&gt;美食&lt;/option&gt; 
+&lt;option value=&quot;6&quot;&gt;娱乐&lt;/option&gt; 
+&lt;option value=&quot;7&quot;&gt;运动&lt;/option&gt; 
+&lt;option value=&quot;8&quot;&gt;实用查询&lt;/option&gt; 
+&lt;option value=&quot;9&quot;&gt;名站导航&lt;/option&gt; 
+&lt;option value=&quot;10&quot; selected=&quot;selected&quot;&gt;音乐&lt;/option&gt; 
+&lt;option value=&quot;11&quot;&gt;特色站&lt;/option&gt;
+&lt;/select&gt; 
+[/html] 

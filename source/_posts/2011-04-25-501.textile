@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'linux查看用户命令'
+date: 2011-4-25
+wordpress_id: 501
+permalink: /blogs/501
+comments: true
+---
+做个笔记，冒号别忘了。
+cat /etc/passwd |cut -f 1 -d :

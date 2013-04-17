@@ -1,0 +1,48 @@
+---
+layout: post
+title: 'phpwind版块支持二级域名的一种思路 （仅供参考）'
+date: 2011-3-24
+wordpress_id: 471
+permalink: /blogs/471
+comments: true
+---
+效果：二级域名可以直接访问phpwind相应的版块；
+思路：判断用户访问的URL，进行重定向；
+
+首先，写这个一个文件，本人存放的路径是 require/jxu/
+[php]
+&lt;?php
+//版块FID对应相应的二级域名
+$jxuUrl = array(
+	'806' =&gt; 'news.jiaxingu.com',
+	'807' =&gt; 'friend.jiaxingu.com',
+	'808' =&gt; 'life.jiaxingu.com',
+	'809' =&gt; 'xinxi.jiaxingu.com',
+);
+
+$url = $_SERVER[ 'HTTP_HOST'];
+$params =$_SERVER['QUERY_STRING'];
+
+foreach($jxuUrl as $key =&gt; $value){
+	//当地址栏url地址和$jxuUrl中对应的值相同，且无参数时进行跳转
+	if($url  == $value &amp;&amp; !$params){  
+		header(&quot;Location:http://$value/thread-htm-fid-$key.html&quot;);
+		exit;
+	}
+}
+?&gt;
+[/php]
+
+然后，在global.php最底部进行加载，
+[php]
+//当非登陆状态下加载，加入判断，解决登陆异常的bug
+if(!strpos($_SERVER['PHP_SELF'],'login.php')){
+    require_once (D_P.'require/jxu/rewriteUrl.php');
+}
+[/php]
+
+最后，还要将二级域名绑定到相应的目录
+
+演示站：
+<a href="http://www.jiaxingu.com">www.jiaxingu.com</a> --- 首页
+<a href="http://news.jiaxingu.com">news.jiaxingu.com</a> --- 可以访问相应的版块

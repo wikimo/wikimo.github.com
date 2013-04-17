@@ -1,0 +1,22 @@
+---
+layout: post
+title: 'rails 设置默认controller的方法'
+date: 2010-8-26
+wordpress_id: 273
+permalink: /blogs/273
+comments: true
+---
+效果，比如访问 http://www.xxx.com/后面不用加比如 http://www.xxx.com/user  http://www.xxx.com/arctile之类的就能访问默认controller
+
+方法是修改config/routes.rb
+
+添加 
+[ruby]map.root :controller =&gt; &quot;arctile&quot;[/ruby]
+
+同时，删除public/index.html
+
+可以查看config/routes.rb英文注释
+[ruby]
+# You can have the root of your site routed with map.root -- just remember to delete public/index.html.
+# map.root :controller =&gt; &quot;welcome&quot;
+[/ruby] 

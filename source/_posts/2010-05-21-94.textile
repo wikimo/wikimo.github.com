@@ -1,0 +1,28 @@
+---
+layout: post
+title: '关于linux下mysql数据库备份shell脚本示例'
+date: 2010-5-21
+wordpress_id: 94
+permalink: /blogs/94
+comments: true
+---
+<div id="_mcePaste">Google上搜“linux mysql 自动备份”，资料还是蛮多的，但总感觉不好用，所以打算自己写。首先来个简单的吧，不玩自动备份，先手动执行shell备份吧。以下是shell脚本</div>
+<blockquote>
+<div>#!/bin/bash</div>
+<div id="_mcePaste"># mysql bak shell</div>
+<div id="_mcePaste">echo mysql bak begin....</div>
+<div id="_mcePaste">#定义mysql用户名，密码，需要备份的数据库名</div>
+<div id="_mcePaste">db_user='root'</div>
+<div id="_mcePaste">db_pwd='wiki'</div>
+<div id="_mcePaste">db_name='test'</div>
+<div id="_mcePaste">#获取系统时间，主要是生成备份文件名称</div>
+<div id="_mcePaste">filename=`date +%Y-%m-%d-%H-%M`</div>
+<div id="_mcePaste">#利用mysqldump导出数据，具体路径根据需要修改</div>
+<div id="_mcePaste">mysqldump -u$db_user -p$db_pwd $db_name | gzip &gt; /data0/bak/db_$filename.gz</div>
+<div id="_mcePaste">echo mysql bak end....</div></blockquote>
+<div id="_mcePaste">几个注意点：</div>
+<div id="_mcePaste">（1）shell脚本不能有空行，否则运行失败（本人也刚学，不知是否这样，测试环境为cygwin）</div>
+<div id="_mcePaste">（2）mysqldump -u$db_user -p$db_pwd 实际上是</div>
+<div id="_mcePaste">mysqldump -uroot -pwiki</div>
+<div id="_mcePaste">-uroot -pwiki 是故意连在一起写的，这样不会提示输入密码确认</div>
+<div id="_mcePaste">（3）filename=`date +%Y-%m-%d-%H-%M` 的写法单引号为Esc下面的按键，date后需空一格</div>

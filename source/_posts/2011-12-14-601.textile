@@ -1,0 +1,14 @@
+---
+layout: post
+title: '关于RVM安装失败的问题'
+date: 2011-12-14
+wordpress_id: 601
+permalink: /blogs/601
+comments: true
+---
+按照官网教程执行
+{% codeblock lang:c%}
+bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+{% endcodeblock %}
+
+结果提示失败了，提示“Could not download...”之类的东西，提示好像是CA认证错误之类的东西，提示curl可能需要加-k参数选项，直接访问下https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer，把这段shell脚本保存下来，查找shell脚本大概在“Downloading RVM”的位置，有个curl -L 后加个-K保存，执行该段shell脚本即可

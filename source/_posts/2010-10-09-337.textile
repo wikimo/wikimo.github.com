@@ -1,0 +1,9 @@
+---
+layout: post
+title: 'dzx1.5 ucenter配置文件路径'
+date: 2010-10-9
+wordpress_id: 337
+permalink: /blogs/337
+comments: true
+---
+主要是做个标记，根目录下uc_server/data/config.inc.php

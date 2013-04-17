@@ -1,0 +1,90 @@
+---
+layout: post
+title: '关于PHPWind中子版块帖子置顶至父版块的解决方案'
+date: 2010-5-19
+wordpress_id: 87
+permalink: /blogs/87
+comments: true
+---
+<div id="_mcePaste">需求描述：当前拥有父版块A，父版块A下面有子版块B，C，D，版主或管理员同时对父版块A，子版块B、C、D拥有帖子管理权限。需要将子版块中的帖子可以置顶至父版块或父版块和子版块。</div>
+<div id="_mcePaste">版块环境：PHPWind7.5 SP3优化版</div>
+<div id="_mcePaste">代码修改可能涉及到的文件：mawhole.php, require/updateforum.php,template/wind/ajax_mawhole.htm</div>
+<div id="_mcePaste">原理分析：</div>
+<div id="_mcePaste">在帖子置顶的过程中，首先访问mawhole.php，通过action为headtopic 进行判断，然后通过调用require/updateforum.php中的getForumListForHeadTopic()返回一个数组，该数组存储了帖子置顶的目标版块，就是帖子置顶后在哪些版块可见。为了方便今后升级扩展，不建议直接修改核心文件，本人的修改方法是。</div>
+<div id="_mcePaste">（1）复制require/updateforum.php中的getForumListForHeadTopic()命名为getForumListForHeadTopicByJX09()这样的好处是原始方法仍在，并未冲突</div>
+<blockquote>
+<div id="_mcePaste">#$top_4用于定制置顶方式</div>
+<div id="_mcePaste">$top_4 = $top_3 = $top_2 = $top_1 = $catedbs = array();</div></blockquote>
+<div id="_mcePaste">#将所有版块的树形结构展现出来，且为三层结构，根》分类》版块</div>
+<blockquote>
+<div id="_mcePaste">foreach ((array)$catedb as $k1 =&gt; $v1) {</div>
+<div id="_mcePaste">$catedbs[$v1['fid']] = array();</div>
+<div id="_mcePaste">foreach ((array)$forumdb[$v1['fid']] as $k2 =&gt; $v2) {</div>
+<div id="_mcePaste">$catedbs[$v1['fid']][] = $v2['fid'];</div>
+<div id="_mcePaste">foreach ((array)$sub1[$v2['fid']] as $k3 =&gt; $v3) {</div>
+<div id="_mcePaste">$catedbs[$v1['fid']][] = $v3['fid'];</div>
+<div id="_mcePaste">foreach ((array)$sub2[$v3['fid']] as $k4 =&gt; $v4) {</div>
+<div id="_mcePaste">$catedbs[$v1['fid']][] = $v4['fid'];</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">在$top_3[$v4['fid']] = "&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;|-".$v4['name']; 下面加入</div>
+<blockquote>
+<div id="_mcePaste">if($currentForum['fid'] == $v4['fid']){ #当前帖子所在版块FID向上查找父版块FID</div>
+<div id="_mcePaste">if($v4['fup'] == $v3['fid']){</div>
+<div id="_mcePaste">#echo $v2['fid']; //获取父版块ID 528  这里已经找到了父版块FID，然后再根据父版块FID向下查找</div>
+<div id="_mcePaste">#var_dump($sub1);</div>
+<div id="_mcePaste">#var_dump($sub1[$v2['fid']]);</div>
+<div id="_mcePaste">foreach((array)$sub1[$v2['fid']] as $k5 =&gt; $v5){</div>
+<div id="_mcePaste">foreach((array)$sub2[$v5['fid']] as $k6 =&gt; $v6){</div>
+<div id="_mcePaste">#echo $v6['name'].'&lt;br/&gt;'; //这里其实已经找到了需要置顶的版块FID了</div>
+<div id="_mcePaste">$top_4[$v6['fid']] = "&amp;nbsp;|-".$v6['name'];</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">（2）修改mawhole.php文件，同样可以重命名文件例jx09mawhole.php</div>
+<div id="_mcePaste">1.修改</div>
+<blockquote>
+<div id="_mcePaste">list($catedbs,$top_1,$top_2,$top_3) = getForumListForHeadTopic($fid);</div></blockquote>
+<div id="_mcePaste">为</div>
+<blockquote>
+<div id="_mcePaste">list($catedbs,$top_1,$top_2,$top_3,$top_4) = getForumListForHeadTopicByJX09($fid);</div></blockquote>
+<div id="_mcePaste">调用我们刚才改写的方法，将扩展置顶数据储存于$top_4</div>
+<div id="_mcePaste">2.同时在下面加入相应代码，上面有$top_1，$top_2，$top_3的，很好找，对于添加就是了</div>
+<blockquote>
+<div id="_mcePaste">if ($top_4) {</div>
+<div id="_mcePaste">$top_4_index = pwJsonEncode(array_keys($top_4));</div>
+<div id="_mcePaste">$top_4 = pwJsonEncode($top_4);</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">3.加入“$topped != 4”排除权限判断</div>
+<blockquote>
+<div id="_mcePaste">if ($topped != 4 &amp;&amp; $topped &gt; $pwTopped ) {</div>
+<div id="_mcePaste">Showmsg('masigle_top');</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">4.改写checkForHeadTopic()方法，同2类似，当然也可以重命名checkForHeadTopicByJX09()</div>
+<blockquote>
+<div id="_mcePaste">elseif ($toptype == 4) {</div>
+<div id="_mcePaste">$topAll = ',' . implode(',',array_keys((array)$top_4)) . ',';</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">5.改写4中修改的调用</div>
+<blockquote>
+<div id="_mcePaste">!checkForHeadTopicByJX09($topped,$fid,$selForums) &amp;&amp; Showmsg('admin_forum_right');</div></blockquote>
+<div id="_mcePaste">6.下面也加入权限判断，排除第四种情况，这是取消置顶时涉及的权限操作</div>
+<blockquote>
+<div id="_mcePaste">if ($rt['topped'] != 4 &amp;&amp; $rt['topped'] &gt; $pwTopped)</div></blockquote>
+<div id="_mcePaste">（3）修改相应的模板，这里可能涉及两个模板，ajax_mawhole.htm 和mawhole.htm，其中ajax_mawhole.htm为ajax调用时涉及到的文件，修改方法一致。</div>
+<div id="_mcePaste">1.添加radio选项</div>
+<blockquote>
+<div id="_mcePaste">&lt;input type="radio" name="topped" value="4" $topped_4 onclick="changeForums(this.value,'$selforums','$_tight')" /&gt;定制置顶</div></blockquote>
+<div id="_mcePaste">2.修改changeForums() js方法，添加相应的代码，这些主要是扩展后要添加的，照葫芦画瓢就行了。</div>
+<blockquote>
+<div id="_mcePaste">else if(toptype==4){</div>
+<div id="_mcePaste">selForumsIndexs = JSONParse('$top_4_index');</div>
+<div id="_mcePaste">selForums = JSONParse('$top_4');</div>
+<div id="_mcePaste">}</div></blockquote>
+<div id="_mcePaste">另外可能还需要添加相应的置顶图标，这个很简单的，添加到相应的images/对于模板文件夹名/file/下就可以了</div>
+<div id="_mcePaste">OK。搞定测试……</div>
+<div id="_mcePaste">修改文件参考下载（利于复制一份重新改的方式）：<a href="http://www.wenotes.com/wp-content/uploads/2010/05/upload1.zip">http://www.wenotes.com/wp-content/uploads/2010/05/upload1.zip</a></div>
+<div id="_mcePaste">咨询邮箱: gwikimo@gmail.com</div>

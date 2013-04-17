@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'linux 安装xdebug的一些问题'
+date: 2011-7-5
+wordpress_id: 565
+permalink: /blogs/565
+comments: true
+---
+一、安装步骤
+
+1.把xdeubg相应的包下下来，现在可能xdebug.org被墙了，需要代理过去；
+
+2.tar 解压，进入文件目录phpize下
+
+3. ./configure  --enable-xdebug ---with-php-config=/usr/php/bin/php-config  #打个比方，具体路径自己指定
+
+4.make &amp;&amp; make install
+
+5.php.ini指定zend_extension=xdebug.so可能需要写长路径
+
+6.重启php-fpm，或者apache,nginx之类的，查看下phpinfo
+
+二、Xdebug MUST be loaded as a Zend extension in Unknown on line 0
+
+xdebug.so通过zend_extension指定，而不是 extension
+
+三、xdebug 下var_dump后没有格式化输出：
+
+解决方法：查看下php.ini,html_errors 设置为On

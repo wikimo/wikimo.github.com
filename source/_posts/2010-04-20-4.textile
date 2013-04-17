@@ -1,0 +1,12 @@
+---
+layout: post
+title: '解决远程mysql无法通过phpmyadmin正常导入的问题'
+date: 2010-4-20
+wordpress_id: 4
+permalink: /blogs/4
+comments: true
+---
+<div id="_mcePaste">
+<div id="_mcePaste">在web开发过程中可能会碰见这样的情况：一个虚拟主机，只提供了FTP与通过phpmyadmin管理mysql数据库的权限，在通过phpmyadmin导入数据的过程中经常会出现浏览器访问假死现象，折腾半天无效果。</div>
+<div id="_mcePaste">解决方案：通过本地可视化mysql管理工具远程链接mysql服务器，然后通过mysql管理工具附带的数据导入功能进行导入就OK了。本人测试的mysql可视化管理工具为Navicat for MySQL</div>
+</div>

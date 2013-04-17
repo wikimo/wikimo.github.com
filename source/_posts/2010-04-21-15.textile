@@ -1,0 +1,26 @@
+---
+layout: post
+title: '通过JS获取图片相对坐标位置'
+date: 2010-4-21
+wordpress_id: 15
+permalink: /blogs/15
+comments: true
+---
+此问题是在使用HTML map area 的时候碰到的，就是所谓的给图片创建热区，建立超链接的问题。 首先来分析下创建热区的代码
+<blockquote>
+<div id="_mcePaste">&lt;img src="test.jpg"  usemap="#Map"/&gt;</div>
+<div>&lt;map name="Map"&gt;</div>
+<div id="_mcePaste">&lt;area shape="rect" coords="400,10,750,40" href="http://wenotes.com" target="_blank" /&gt;</div>
+<div id="_mcePaste">&lt;/map&gt;</div>
+<div></div></blockquote>
+img标签和map标签通过img的usemap属性与map的name属性进行关联，通过area标签创建一个区域（矩形），coords是矩形区域的两个坐标点位置，即左上角与右下角。我们现在的目标是获取当前的两个坐标点。
+
+方法1：通过DreamWeaver之类的可视化软件绘制热区，不过这种方法不一定好用，复杂点的页面不一定适用；
+
+方法2：通过Photoshop之类的图形工具获取图片坐标点位置，例截图两次取端点；
+
+方法3：通过JS点击图片位置获取坐标点信息；
+
+<a href="http://www.wenotes.com/wp-content/uploads/2010/04/2010-04-21-21-37-51.jpg"><img class="alignnone size-medium wp-image-16" style="border: 0px initial initial;" title="2010-04-21 21 37 51" src="http://www.wenotes.com/wp-content/uploads/2010/04/2010-04-21-21-37-51-300x241.jpg" alt="" width="300" height="241" /></a>
+
+具体实现方式请点击下载：<a title="JS获取图片相对坐标位置代码演示" href="http://www.wenotes.com/wp-content/uploads/2010/04/test.zip" target="_blank">http://www.wenotes.com/wp-content/uploads/2010/04/test.zip</a>

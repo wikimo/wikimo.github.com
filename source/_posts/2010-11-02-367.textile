@@ -1,0 +1,31 @@
+---
+layout: post
+title: 'jquery四行代码实现顶部大幅下拉广告效果(转载)'
+date: 2010-11-2
+wordpress_id: 367
+permalink: /blogs/367
+comments: true
+---
+jquery代码：
+[js]
+&lt;script type=&quot;text/javascript&quot;&gt;  
+&lt;!--   
+$(function(){  
+//广告收回  
+ var upAdBanner = function(){    
+  $(&quot;#ad-banner&quot;).slideUp(800);  
+ };  
+//广告下拉  
+ $(&quot;#ad-banner&quot;).slideDown(800);  
+//设置延迟的广告收回，这里是8秒  
+ setTimeout(upAdBanner,8000);  
+}) --&gt;  
+&lt;/script&gt; 
+[/js]
+
+HTML代码：
+[html]
+&lt;body style=&quot;text-align:center;&quot;&gt;  
+    &lt;div id=&quot;ad-banner&quot; style=&quot;height:500px;width:700px;background:green;margin:0 auto;&quot;&gt;这里放入图片或flash就可以了&lt;/div&gt;  
+&lt;/body&gt;  
+[/html] 

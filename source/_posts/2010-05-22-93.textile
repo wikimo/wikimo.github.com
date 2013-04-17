@@ -1,0 +1,15 @@
+---
+layout: post
+title: '关于Linux下crontab定时任务不执行的几个注意点'
+date: 2010-5-22
+wordpress_id: 93
+permalink: /blogs/93
+comments: true
+---
+1.检查脚本或文件的执行权限，可执行chmod 进行修改；
+
+2.查看crontab -u root -l 查看是否有执行定时任务，如果没有，可以利用crontab -u root -e 进行编辑。网上说直接编辑/etc/crontab在这里添加定时任务自己测试了似乎并不会执行；
+
+3.执行下crontab -u root /var/spool/cron/root 试试
+
+4.查看/var/log/cron 日志里面是否记录执行过程

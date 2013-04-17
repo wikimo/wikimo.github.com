@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'Rails一对多关于undefined method的问题'
+date: 2011-4-7
+wordpress_id: 480
+permalink: /blogs/480
+comments: true
+---
+现象：比如模型Category与模型Info，是一对多的关系，一个分类对应多条信息，在数据读取的时候出现
+undefined method `name' for nil:NilClass的问题
+原因分析：可能是数据库某条记录对应的该记录有空值，导致在循环输出记录的时候碰到null值

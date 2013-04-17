@@ -1,0 +1,19 @@
+---
+layout: post
+title: 'phpwind多账号绑定修改密码后无法切换'
+date: 2010-9-20
+wordpress_id: 307
+permalink: /blogs/307
+comments: true
+---
+现象：如题所述，phpwind多账号绑定功能在账号密码修改后无法正常切换，提示重新绑定账号。
+
+分析：用户的实际密码保存在pw_members password字段中，多账号绑定的数据都保存在pw_userbinding 的password字段中，在用户修改密码时程序只更新了表pw_members的password字段，并未更新pw_userbinding中对应的password字段，所以造成无法正常切换。
+
+解决方案：修改require/profile/modify.php文件中进行相应的数据更新
+[php]
+$rt = $db-&gt;get_one(&quot;select * from pw_userbinding where uid=&quot; . pwEscape($winduid));
+	if($rt &amp;&amp; $upmembers['password']){
+		$db-&gt;update(&quot;update pw_userbinding set password ='$upmembers[password]' where uid=&quot;. pwEscape($winduid));
+	}
+[/php] 

@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'rails遗留系统改造时对模型的定义'
+date: 2011-6-17
+wordpress_id: 552
+permalink: /blogs/552
+comments: true
+---
+需要在创建model的时候指定表名，指定主键名，并且在database.yml指定相应的数据库编码
+1.rails g model modelName 进行创建模型，在生成的模型中指定表名和主键
+###指定表名###
+set_table_name
+
+###指定主键###
+set_primary_key
+
+2.可以通过rails c 在调试控制台下测试是否配置正确

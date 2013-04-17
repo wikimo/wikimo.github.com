@@ -1,0 +1,14 @@
+---
+layout: post
+title: '发个小广告'
+date: 2011-1-5
+wordpress_id: 419
+permalink: /blogs/419
+comments: true
+---
+有以下需求的朋友可以联系我
+1.phpwind\discuz 功能、模板二次开发
+2.web中小型系统开发
+
+邮箱:gwikimo@gmail.com
+或者blog留言

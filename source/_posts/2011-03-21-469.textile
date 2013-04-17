@@ -1,0 +1,13 @@
+---
+layout: post
+title: '图片刻录DVD直接播放的方法'
+date: 2011-3-21
+wordpress_id: 469
+permalink: /blogs/469
+comments: true
+---
+需求：将图片刻录成DVD，在DVD影碟机里面可以直接播放。
+解决方案：用绘声绘影将图片先转成视频格式，比如mpg的那种视频格式，然后利用“ConvertXtoDVDPortable”这个软件进行视频转换并刻录成DVD。
+
+注：也可以去greendown.cn上找一些其它软件试试，但本人找了一些感觉都不太好用，不是要注册，就是运行报错。还是利用上面的方法好，虽然麻烦了店。
+本人下的是绘声绘影9简洁绿色版。

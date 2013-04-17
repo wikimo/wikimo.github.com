@@ -1,0 +1,15 @@
+---
+layout: post
+title: '关于FireFox 点击“选项” 无响应的问题'
+date: 2010-8-24
+wordpress_id: 270
+permalink: /blogs/270
+comments: true
+---
+现象如题描述，通过google搜索了下，有人也碰见过类似问题：
+
+<a href="http://www.firefox.net.cn/forum/viewtopic.php?p=249879">http://www.firefox.net.cn/forum/viewtopic.php?p=249879</a>
+
+最后的解决方案：将FF版本降至3.5.7
+
+原因推断：估计是系统补丁或者什么插件冲突引起的

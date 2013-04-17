@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'phpwind8关于新鲜事在门户页的调用'
+date: 2010-11-8
+wordpress_id: 373
+permalink: /blogs/373
+comments: true
+---
+[html]
+&lt;pw id=&quot;jx09index新鲜事@JX09首页&quot; title=&quot;jx09index新鲜事@JX09首页&quot;/&gt;
+&lt;list num=&quot;5&quot; action=&quot;weibo&quot; cachetime=&quot;30&quot; ifpushonly=&quot;0&quot; title=&quot;新鲜事&quot; /&gt;
+&lt;loop&gt;
+	&lt;p&gt;&lt;em&gt;{username}：&lt;/em&gt;&lt;a href=&quot;{url}&quot;&gt;{title,26}&lt;/a&gt;&lt;/p&gt;
+&lt;/loop&gt;
+[/html]
+
+pw：PW内置门户调用标签；
+list：数据调用模块标签
+action  : 数据调用的类型，这里"weibo"调用新鲜事模块数据；
+{username} :新鲜事作者
+{url} :新鲜事链接，有些是帖子的可以直接链接过去
+
+演示：<a href="http://www.jx09.com">www.jx09.com</a>

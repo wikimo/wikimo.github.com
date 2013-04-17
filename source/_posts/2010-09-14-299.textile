@@ -1,0 +1,31 @@
+---
+layout: post
+title: '编译安装mysql的一些问题'
+date: 2010-9-14
+wordpress_id: 299
+permalink: /blogs/299
+comments: true
+---
+主要的编辑安装方法可以查看解压目录下 INSTALL-SOURCE文件，里面有相应的安装步骤；
+
+<strong>（1）设置mysql 数据存放目录</strong>
+bin/mysql_install_db --basedir=/d/env/mysql --datadir=/d/env/mysql/data --user=mysql
+
+<strong>（2）启动mysql，并指定配置文件</strong>
+bin/mysqld_safe --defaults-file=/d/env/mysql/my.cnf &amp;
+
+<strong>（3）设置mysql开机自动启动</strong>
+cp support-files/mysql.server /etc/rc.d/init.d/mysqld  #复制mysql.server
+chmod 755 /etc/rc.d/init.d/mysqld #设置mysqld权限
+chkconfig --add mysqld #设置系统服务器
+chkconfig mysqld on #开启mysqld服务
+
+<strong>（4）mysql-bin.index not found 错误</strong>
+1.可能是权限问题引起的；
+2.注释mysql配置文件中的skip-federated
+
+<strong>（5）初始化root密码</strong>
+/d/env/mysql/bin/mysqladmin -u root password 'new-password'
+
+<strong>（6）编译的时候，设置字符集</strong>
+./configure --prefix=/d/env/mysql --with-extra-charset=all

@@ -1,0 +1,41 @@
+---
+layout: post
+title: 'rails gem install mysql error 错误'
+date: 2010-7-22
+wordpress_id: 215
+permalink: /blogs/215
+comments: true
+---
+现象：gem install mysql 提示安装失败，错误如下：
+<blockquote>
+<div id="_mcePaste">Building native extensions.  This could take a while...</div>
+<div id="_mcePaste">ERROR:  Error installing mysql:</div>
+<div id="_mcePaste">ERROR: Failed to build gem native extension.</div>
+<div id="_mcePaste">/ree/bin/ruby extconf.rb</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">checking for main() in -lm... yes</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">checking for main() in -lz... yes</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">checking for main() in -lsocket... no</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">checking for main() in -lnsl... yes</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">checking for main() in -lmygcc... no</div>
+<div id="_mcePaste">checking for mysql_query() in -lmysqlclient... no</div>
+<div id="_mcePaste">*** extconf.rb failed ***</div>
+<div id="_mcePaste">Could not create Makefile due to some reason, probably lack of</div>
+<div id="_mcePaste">necessary libraries and/or headers.  Check the mkmf.log file for more</div>
+<div id="_mcePaste">details.  You may need configuration options.</div>
+<div id="_mcePaste">Provided configuration options:</div>
+<div id="_mcePaste">--with-opt-dir</div>
+<div id="_mcePaste">--without-opt-dir</div></blockquote>
+解决方案： 在执行 gem install mysql 是增加mysql config参数
+
+例：gem install mysql -- --with-mysql-config=/usr/local/webserver/mysql/bin/mysql_config
+
+参考文章：
+
+<a href="http://robinwu.javaeye.com/blog/310829">http://robinwu.javaeye.com/blog/310829</a>
+
+<a href="http://www.coolpig.com/?p=106">http://www.coolpig.com/?p=106</a>

@@ -1,0 +1,23 @@
+---
+layout: post
+title: '关于discuz x门户首页模板的使用'
+date: 2010-6-27
+wordpress_id: 133
+permalink: /blogs/133
+comments: true
+---
+discuz x推出至今也有一段时间了，总的来说discuz还是在进步的，同时，某些地方的改进却不一定如人意。本人体验了下门户首页模板的使用方法。的确DIY对于一些非代码级的人员来说相对比较方便，但对于一些开发人员来说却显得累赘了，似乎还是原先的数据调用方式方法。好了，不废话了，说下discuz x门户数据调用的方法。
+
+1.门户首页模板的修改位置在template/模板文件夹/portal/index.htm文件，如果该文件没有，自动调用template/default下的相应文件，所以只要新建一个风格模板文件夹，创建portal/index.htm，编写该文件即可
+
+2.登陆系统后台》门户》模块管理》添加数据调用，添加后可以使用内部调用的方式，类似
+<blockquote>&lt;!--{block/86}--&gt;这样的代码</blockquote>
+<a href="http://www.ihtml6.com/wp-content/uploads/2010/06/1.jpg"><img class="alignnone size-full wp-image-138" title="1" src="http://www.ihtml6.com/wp-content/uploads/2010/06/1.jpg" alt="" width="581" height="377" /></a>
+
+<a href="http://www.ihtml6.com/wp-content/uploads/2010/06/2.jpg"><img class="alignnone size-full wp-image-134" title="2" src="http://www.ihtml6.com/wp-content/uploads/2010/06/2.jpg" alt="" width="596" height="167" /></a>
+
+3.如何修改上述数据调用模块的HTML结构及样式那，登陆系统后台》门户》模块管理》模块样式中进行创建编辑，然后在
+
+<a href="http://www.ihtml6.com/wp-content/uploads/2010/06/3.jpg"><img class="alignnone size-full wp-image-135" title="3" src="http://www.ihtml6.com/wp-content/uploads/2010/06/3.jpg" alt="" width="453" height="552" /></a>
+
+<a href="http://www.ihtml6.com/wp-content/uploads/2010/06/4.jpg"><img class="alignnone size-full wp-image-139" title="4" src="http://www.ihtml6.com/wp-content/uploads/2010/06/4.jpg" alt="" width="436" height="361" /></a>

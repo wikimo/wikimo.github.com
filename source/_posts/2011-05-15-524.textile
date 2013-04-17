@@ -1,0 +1,15 @@
+---
+layout: post
+title: '推荐一款看图软件，美图看看'
+date: 2011-5-15
+wordpress_id: 524
+permalink: /blogs/524
+comments: true
+---
+软件下载地址：
+<a href="http://www.downg.com/soft/13789.html" target="_blank">绿软下载</a>
+<a href="http://kankan.meitu.com/" target="_blank">官网下载1</a>
+<a href="http://kankan.meitu.com/v2/index.html" target="_blank">官网下载2</a>
+
+软件特点：
+个人感觉简单，轻量级，UI界面也不错，满足基本的需求。

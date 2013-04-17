@@ -1,0 +1,50 @@
+---
+layout: post
+title: '社区型网站运营系列之内容策略，做个笔记'
+date: 2011-7-3
+wordpress_id: 561
+permalink: /blogs/561
+comments: true
+---
+（转自）<a href="http://www.phpwind.net/read.php?tid=1249080">http://www.phpwind.net/read.php?tid=1249080</a>
+
+<span style="font-family: 宋体;">用户体验、信息架构、内容管理系统、视觉设计、交互设计、用户调查、元数据，以及其他一些帮助我们用户找到和消费内容的原则等，这些我们已经听的很多也说了很多，然后，我们很少谈论内容（</span><span style="font-family: times;">content</span><span style="font-family: 宋体;">）本身，总觉得只要网站这些都弄好了，内容会自然产生的，或者觉得内容只是新闻门户网站才要做事情。</span>
+<span style="font-family: 宋体;"> 之前听的最多的是“内容为王”，然后随着</span><span style="font-family: times;">web2.0</span><span style="font-family: 宋体;">和社会化网络的流行，人人都是内容的生产者和消费者，现在连这种说法都很少听到了，我从最近的工作中，越来越发现内容是一个网站的实质所在，不管一般的新闻门户网站，还是新兴的</span><span style="font-family: times;">sns</span><span style="font-family: 宋体;">等，“内容为王”的本质没变，只是内容的形式变的多样了，内容的生产、消费和传播的方式变的多元化了。下面我就整理了关于内容策略方面的一些资料，当然，这个是很笼统的东西，不同网站会有不同的内容策略（</span><span style="font-family: times;">contentstrategy</span><span style="font-family: 宋体;">）。</span>
+<span style="font-family: 宋体;"> 首先，我们了解下什么是“内容”呢？</span>
+<span style="font-family: 宋体;"> 我们去新浪看新闻，新闻是“内容”。</span>
+<span style="font-family: 宋体;"> 我们去淘宝买东西，东西是“内容”。</span>
+<span style="font-family: 宋体;"> 我们去豆瓣看书评，书评是“内容”。</span>
+<span style="font-family: 宋体;"> 我们去开心网玩开心农场，那么开心农场是“内容”。</span>
+<span style="font-family: 宋体;"> 这些都是实在的内容，也有一些“看不见”的内容，比如说，你的关系。像现在流行的</span><span style="font-family: times;">sns</span><span style="font-family: 宋体;">，可以说是用户通过“看不见的内容”找到“有形的内容”。</span>
+<span style="font-family: 宋体;"> 接下来来看下什么是内容策略（</span><span style="font-family: times;">contentstrategy</span><span style="font-family: 宋体;">）？</span>
+<span style="font-family: 宋体;"> “内容策略是一系列关于有用的（</span><span style="font-family: times;">useful</span><span style="font-family: 宋体;">）、可用的（</span><span style="font-family: times;">usable</span><span style="font-family: 宋体;">）内容的创造、消费和管理的一系列计划。内容策略不仅仅能帮助我们知道哪些内容是我们需要的，还让我们知道为什么需要这些内容。——</span><span style="font-family: times;">KristinaHalvorson</span><span style="font-family: 宋体;">”</span>
+<span style="font-family: 宋体;"> 知道了什么是内容，什么是内容策略之后，那么我们为什么要内容策略呢？现在这个</span><span style="font-family: times;">sns</span><span style="font-family: 宋体;">流行的年代，还需要内容策略吗？答案是肯定的，有几点原因：</span>
+<span style="font-family: 宋体;"> 内容管理的混乱</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">1</span><span style="font-family: 宋体;">．相关度不高——为了一味的追求流量，好多网站会放一些或者引导用户发一些和网站本身不相关的东西；</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">2</span><span style="font-family: 宋体;">．内容碎片化——很多用户产生内容（</span><span style="font-family: times;">UGC</span><span style="font-family: 宋体;">）的网站，小众长尾现象比较明显，这导致用户搜寻信息的成本加大；</span>
+<span style="font-family: 宋体;"> 每个人都是一个“出版者”</span>
+<span style="font-family: 宋体;"> 现在许多网站的用户理论上说都是网站内容的的消费者，也同时是一个贡献者，如果没有一个科学的可行的内容策略，每个人能产生内容，但是当内容大量而无序的时候，就是一文不值的垃圾，比如可以看到很多论坛中满屏的广告帖。</span>
+<span style="font-family: 宋体;"> 让用户行动，而不是察觉（</span><span style="font-family: times;">Action</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">NOTAWARENESS</span><span style="font-family: 宋体;">）</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">1.</span><span style="font-family: 宋体;">网站的本质是让用户有所行动，我们去一个网站都是带着目的和问题去的，比如去网易看看新闻，去豆瓣看看有没有好看的书，去</span><span style="font-family: times;">mtime</span><span style="font-family: 宋体;">看看最近的电影，而这些问题的解决，靠的是什么呢？靠的是“让用户有所行动”，网站的内容就是这个触发点。</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">2.</span><span style="font-family: 宋体;">我们靠什么去提高用户体验呢？靠的是给用户提供有用的可用的内容，为用户解决一个问题才是关键，而不是只是简单地关注如何找到内容。</span>
+<span style="font-family: 宋体;"> 那么内容策略怎么做呢？</span>
+<span style="font-family: 宋体;"> 按照</span><span style="font-family: times;">what</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">why</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">how</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">where</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">when</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">who</span><span style="font-family: 宋体;">这五个关键字做。</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">What</span>
+<span style="font-family: 宋体;"> 哪些内容是我们需要的？</span>
+<span style="font-family: 宋体;"> 用什么形式展示出来？（博客，视频，还是讨论…）</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">Why</span>
+<span style="font-family: 宋体;"> 为什么需要这些内容？（用户为什么会关注）</span>
+<span style="font-family: 宋体;"> 这些内容是否有商业价值？（对于网站来说）</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">How</span>
+<span style="font-family: 宋体;"> 怎么去传送这些内容？</span>
+<span style="font-family: 宋体;"> 我们去说出来吗？（那又要以一种什么样的语气呢？）</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">Where</span>
+<span style="font-family: 宋体;"> 内容从哪里获得？</span>
+<span style="font-family: 宋体;"> 我们有从哪里把我们的内容同步到其他地方？（</span><span style="font-family: times;">feeds</span><span style="font-family: 宋体;">，</span><span style="font-family: times;">socialmedia</span><span style="font-family: 宋体;">）</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">When</span>
+<span style="font-family: 宋体;"> 什么时候发布内容？</span>
+<span style="font-family: 宋体;"> 什么时候要更新内容？</span>
+<span style="font-family: 宋体;"> </span><span style="font-family: times;">Who</span>
+<span style="font-family: 宋体;"> 谁将负责这个内容建设？（虽然用户自贡献内容了，但需要人去引导和管理）</span>
+<span style="font-family: 宋体;"> 日常的维护工作？（这个阶段运营人员要做很多事情，把零碎的信息系统化，通过各种方式刺激用户产生更多的内容）</span>
+<span style="font-family: 宋体;">以上这五个要素，对于一个社区型的网站也是适应的，只不过要转变一个观念是，用户是内容的消费者，更是生产者，运营人员的工作不是去产生内容，而是去引导和管理这些内容，刺激用户不断地产生更多的内容，通过不断循环，带来新用户，产生更多内容。</span>

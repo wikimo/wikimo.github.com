@@ -1,0 +1,21 @@
+---
+layout: post
+title: 'Nginx 日志切割脚本'
+date: 2011-12-6
+wordpress_id: 594
+permalink: /blogs/594
+comments: true
+---
+Nginx 日志切割脚本，可以每小时都切割，
+{% codeblock lang:c%}
+#!/bin/bash
+
+# The Nginx logs path
+nginx_logs_path="/alidata/env/nginx/logs/" #
+all_logs_path="/alidata/logs/nginx/"
+
+mkdir -p ${all_logs_path}$(date -d "yesterday" +"%Y")/$(date -d "yesterday" +"%m")/
+mv ${nginx_logs_path}access.log ${all_logs_path}$(date -d "yesterday" +"%Y")/$(date -d "yesterday" +"%m")/access_$(date -d "yesterday" +"%Y%m%d%H%S").log
+kill -USR1 `cat /alidata/env/nginx/logs/nginx.pid`
+
+{% endcodeblock %}

@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'phpmyadmin Wrong permissions on configuration file'
+date: 2011-5-26
+wordpress_id: 536
+permalink: /blogs/536
+comments: true
+---
+phpmyadmin出现错误“Wrong permissions on configuration file”原因可能是文件夹目录权限不对，应该设置755，设置777也不行
+
+chmod -R 755 phpmyadmin

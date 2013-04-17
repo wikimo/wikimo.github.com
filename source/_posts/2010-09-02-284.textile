@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'uchome 执行流程，做个笔记'
+date: 2010-9-2
+wordpress_id: 284
+permalink: /blogs/284
+comments: true
+---
+uchome大致执行流程，做个笔记
+
+1.do.php
+2.do_login.php
+3.space.php?do=feed
+4.source/space_feed.php
+5.加载space_feed.htm模板

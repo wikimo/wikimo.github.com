@@ -1,0 +1,28 @@
+---
+layout: post
+title: '推荐一个图片管理系统MeiuPic'
+date: 2011-1-5
+wordpress_id: 415
+permalink: /blogs/415
+comments: true
+---
+下载地址：<a href="http://blog.meiu.cn/meiupic/">http://blog.meiu.cn/meiupic/</a>
+个人使用过，感觉功能不错，满足基本需求，也比较轻量级
+功能简介：
+
+1.全面支持Sqlite和Mysql两种数据库引擎
+2.支持超大图片上传
+3.相册可以设置公开或个人，个人相册登录后才可以看到
+4.自动生成各种尺寸图片
+5.图片批量管理
+6.简单防盗链功能
+7.可查看图片EXIF信息
+8.图片地址或HTML代码一键复制到剪贴板
+9.支持客户端预处理图片上传
+10.图片幻灯片方式浏览
+11.支持图片水印功能
+12.简易快捷的安装方式
+13.轻量级，只有300K左右的体积
+
+预览：
+<img src="http://blog.meiu.cn/attachment/201007/1279099224_9286e68f.jpg" alt="预览" />

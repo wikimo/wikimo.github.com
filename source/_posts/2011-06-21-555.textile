@@ -1,0 +1,10 @@
+---
+layout: post
+title: '浅析phpwind 文件上传机制'
+date: 2011-6-21
+wordpress_id: 555
+permalink: /blogs/555
+comments: true
+---
+以批量上传为例，通过执行actions/job/mutiupload.php加载lib/upload/下相应的上传文件，最终调用调用lib/upload.class.php下的upload方法执行文件上传，上传成功后，返回文件上传后的地址信息。
+lib/upload.class.php可以看成是一个抽象基类，lib/upload/下的相应文件继承自ib/upload.class.php进行了相应的实现。最终统一通过PwUpload::upload()实现文件上传

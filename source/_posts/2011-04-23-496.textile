@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'linux环境变量执行优先级'
+date: 2011-4-23
+wordpress_id: 496
+permalink: /blogs/496
+comments: true
+---
+linux环境变量执行优先级，做个笔记
+/etc/rc.local => /etc/profile => ~/.bash_rc 和 ~/.bash_profile

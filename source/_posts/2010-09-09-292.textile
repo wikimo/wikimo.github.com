@@ -1,0 +1,118 @@
+---
+layout: post
+title: 'uchome注册时添加自定义字段'
+date: 2010-9-9
+wordpress_id: 292
+permalink: /blogs/292
+comments: true
+---
+需求：uchome二次开发，在注册的时候，需要填写一些额外的字段，比如，年龄，体重，
+转载自：<a href="http://bbs.phpchina.com/thread-152374-1-1.html">http://bbs.phpchina.com/thread-152374-1-1.html</a>，基本思路就是这样，这里添加的字段是"area"，后来又思考了下，肯能有些数据存uchome_space表更好些，思路就是在uc_client/model/user.php插入用户数据的时候去更新表uchome_space
+1.uc_client/control/user.php
+改动代码：
+[php]
+    function onregister() {
+        $this-&gt;init_input();
+        $username = $this-&gt;input('username');
+        $password =  $this-&gt;input('password');
+        $email = $this-&gt;input('email');
+        $questionid = $this-&gt;input('questionid');
+        $answer = $this-&gt;input('answer');
+        $area = $this-&gt;input('area');//自定义字段
+
+        if(($status = $this-&gt;_check_username($username)) &lt; 0) {
+            return $status;
+        }
+        if(($status = $this-&gt;_check_email($email)) &lt; 0) {
+            return $status;
+        }
+        $uid = $_ENV['user']-&gt;add_user($username, $password, $email, 0, $questionid, $answer, $area);
+        return $uid;
+    }
+
+2.uc_client/model/user.php
+改动代码：
+    function add_user($username, $password, $email, $uid = 0, $questionid = '', $answer = '', $area) {
+        $salt = substr(uniqid(rand()), -6);
+        $password = md5(md5($password).$salt);
+        $sqladd = $uid ? &quot;uid='&quot;.intval($uid).&quot;',&quot; : '';
+        $sqladd .= $questionid &gt; 0 ? &quot; secques='&quot;.$this-&gt;quescrypt($questionid, $answer).&quot;',&quot; : &quot; secques='',&quot;;
+        $this-&gt;db-&gt;query(&quot;INSERT INTO &quot;.UC_DBTABLEPRE.&quot;members SET $sqladd username='$username', password='$password', email='$email', area='$area', regip='&quot;.$this-
+
+&gt;base-&gt;onlineip.&quot;', regdate='&quot;.$this-&gt;base-&gt;time.&quot;', salt='$salt'&quot;);
+        $uid = $this-&gt;db-&gt;insert_id();
+        $this-&gt;db-&gt;query(&quot;INSERT INTO &quot;.UC_DBTABLEPRE.&quot;memberfields SET uid='$uid'&quot;);
+        return $uid;
+    }
+[/php]
+3.uc_client/client.php
+改动代码：
+[php]
+/**
+* 用户注册
+*
+* @param string $username     用户名
+* @param string $password     密码
+* @param string $email        Email
+* @param int $questionid    安全提问
+* @param string $answer     安全提问答案
+* @return int
+    -1 : 用户名不合法
+    -2 : 包含不允许注册的词语
+    -3 : 用户名已经存在
+    -4 : email 格式有误
+    -5 : email 不允许注册
+    -6 : 该 email 已经被注册
+    &gt;1 : 表示成功，数值为 UID
+*/
+function uc_user_register($username, $password, $email, $questionid = '', $answer = '', $area) {
+    return call_user_func(UC_API_FUNC, 'user', 'register', array('username'=&gt;$username, 'password'=&gt;$password, 'email'=&gt;$email, 'questionid'=&gt;$questionid, 'answer'=&gt;$answer, 
+
+'area'=&gt;$area));
+}
+[/php]
+
+4.source/do_register.php
+改动代码：添加$area变量
+[php][/php]
+        $area = $_POST['area'];
+        $newuid = uc_user_register($username, $password, $email,$area);
+        if($newuid &lt;= 0) {
+            if($newuid == -1) {
+                showmessage('user_name_is_not_legitimate');
+            } elseif($newuid == -2) {
+                showmessage('include_not_registered_words');
+            } elseif($newuid == -3) {
+                showmessage('user_name_already_exists');
+            } elseif($newuid == -4) {
+                showmessage('email_format_is_wrong');
+            } elseif($newuid == -5) {
+                showmessage('email_not_registered');
+            } elseif($newuid == -6) {
+                showmessage('email_has_been_registered');
+            } else {
+                showmessage('register_error');
+            }
+        } else {
+            $setarr = array(
+                'uid' =&gt; $newuid,
+                'username' =&gt; $username,
+                'area' =&gt; $area,//这里似乎不用修改，没仔细看
+                'groupid' =&gt; 2,
+                'password' =&gt; md5(&quot;$newuid|$_SGLOBAL[timestamp]&quot;), //本地密码随机生成
+                'dateline' =&gt; $_SGLOBAL['timestamp'],
+                'updatetime' =&gt; $_SGLOBAL['timestamp'],
+                'lastlogin' =&gt; $_SGLOBAL['timestamp'],
+                'ip' =&gt; $_SGLOBAL['onlineip']
+            );
+            //更新本地用户库
+            inserttable('members', $setarr, 0, true);
+
+            //设置cookie
+            ssetcookie('auth', authcode(&quot;$setarr[password]\t$setarr[uid]&quot;, 'ENCODE'), 2592000);
+            ssetcookie('loginuser', $username, 31536000);
+            
+            showmessage('registered', rawurldecode($refer));
+        }
+[php][/php]
+5.同时修改模板文件do_regiester.htm加入相应的字段

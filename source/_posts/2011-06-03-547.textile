@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'rails3的一些相关问题，做个笔记'
+date: 2011-6-3
+wordpress_id: 547
+permalink: /blogs/547
+comments: true
+---
+查看当前可用的路由：rake routes #就是可以查下哪类类似 search_photos_path 这样的可用地址
+
+rails3 devise undefined local variable or method ‘root_path’
+这个问题需要在routes.rb中指定 root:to
+
+关于kindeditor使用的一些文章
+http://doabit.iteye.com/blog/749031
+https://github.com/doabit/kindeditor
+http://dnnta.iteye.com/blog/746577

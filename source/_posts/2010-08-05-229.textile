@@ -1,0 +1,46 @@
+---
+layout: post
+title: 'phpwind中全局置顶排除某些版块的方面'
+date: 2010-8-5
+wordpress_id: 229
+permalink: /blogs/229
+comments: true
+---
+需求描述：在全局置顶的时候一些特殊的版块想给屏蔽掉，即在全局置顶操作列表项中不出现该版块
+解决方案：修改require/updateforum.php文件中的getForumListForHeadTopic方法，
+
+1.$top_3这个变量中保持了全局置顶中的版块名称和对于ID
+
+2.在foreach ((array)$catedb as $k1 =&gt; $v1) {}这个循环中去组装需要被输出的数据项，
+将
+[php]
+$top_3[$v1['fid']] = &quot;&amp;gt;&amp;gt;&quot;.$v1['name'];
+[/php]
+修改成
+[php]
+$v1['fid'] != 527 &amp;amp;&amp;amp; $top_3[$v1['fid']] = &quot;&amp;gt;&amp;gt;&quot;.$v1['name']; 
+[/php]527是需要被排除的大（父）版块的ID，以此类推
+将
+[php]$top_3[$v2['fid']] = &quot; |-&quot;.$v2['name'];[/php]
+修改成
+[php]
+if($v1['fid'] != 527 &amp;amp;&amp;amp; $v2['fup'] == $v1['fid'])
+        $top_3[$v2['fid']] = &quot; |-&quot;.$v2['name'];
+[/php]
+
+[php]
+$top_3[$v3['fid']] = &quot;   |-&quot;.$v3['name'];
+[/php]
+修改成
+[php]
+if($v1['fid'] != 527 &amp;amp;&amp;amp; $v3['fup'] == $v2['fid'])
+        $top_3[$v3['fid']] = &quot;   |-&quot;.$v3['name'];
+[/php]
+
+[php]$top_3[$v4['fid']] = &quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;|-&quot;.$v4['name'];[/php]
+
+修改成
+[php]
+if($v1['fid'] != 527 &amp;amp;&amp;amp; $v4['fup'] == $v3['fid'])						
+        $top_3[$v4['fid']] = &quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;|-&quot;.$v4['name'];
+[/php] 

@@ -1,0 +1,13 @@
+---
+layout: post
+title: Starting MySQLCouldn't find MySQL manager or server解决方法(转载)
+date: 2010-7-6
+wordpress_id: 182
+permalink: /blogs/182
+comments: true
+---
+转载自：<a href="http://blog.tradelogo.cn/html/2009/12/31/102.html">http://blog.tradelogo.cn/html/2009/12/31/102.html</a>
+上网搜索，直接将/etc/mysql/my.cnf 重命名即可
+mv my.cnf my.cnf.bak
+
+OK搞定

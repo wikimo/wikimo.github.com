@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'mysql5.5.X 无gbk编码'
+date: 2011-12-8
+wordpress_id: 599
+permalink: /blogs/599
+comments: true
+---
+编译参数直接加入字符集为all,而不是utf8,gbk,之类的试试
+{% codeblock lang:c%}
+  -DWITH_EXTRA_CHARSETS=all \
+  -DWITH_EXTRA_CHARSETS:STRING=all  \
+{% endcodeblock %}

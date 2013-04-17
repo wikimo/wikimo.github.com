@@ -1,0 +1,12 @@
+---
+layout: post
+title: '/etc/ld.so.conf ldconfig'
+date: 2011-11-21
+wordpress_id: 589
+permalink: /blogs/589
+comments: true
+---
+/etc/ld.so.conf
+ldconfig
+
+做个笔记先

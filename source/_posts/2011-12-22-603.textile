@@ -1,0 +1,16 @@
+---
+layout: post
+title: 'js uncaught exception错误'
+date: 2011-12-22
+wordpress_id: 603
+permalink: /blogs/603
+comments: true
+---
+这个错误的原因是，在一个request实例没有结束的时候，试图使用同一个实例再次发送请求造成的...
+
+解决的方法是：增加timeout的时间
+或者，在发起第二次请求的时候abort正在执行的请求
+
+这个问题在IE6下好像不会出现，但是在MF和IE8下都会出现。
+
+原文出处：<a href="http://www.iteye.com/topic/838312" title="http://www.iteye.com/topic/838312" target="_blank">http://www.iteye.com/topic/838312</a>

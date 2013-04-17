@@ -1,0 +1,21 @@
+---
+layout: post
+title: 'Nginx 400 Request Header Or Cookie Too Large '
+date: 2011-12-8
+wordpress_id: 597
+permalink: /blogs/597
+comments: true
+---
+Nginx 400错误，提示“Request Header Or Cookie Too Large ”
+{% codeblock lang:c%}
+http
+{
+......
+client_header_buffer_size 32k;
+large_client_header_buffers 4 32k;
+........
+
+}
+{% endcodeblock %}
+
+原帖：<a href="http://www.zijidelu.org/thread-2964-1-1.html">http://www.zijidelu.org/thread-2964-1-1.html</a>

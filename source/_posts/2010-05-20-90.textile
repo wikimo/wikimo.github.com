@@ -1,0 +1,19 @@
+---
+layout: post
+title: '关于PHPWind楼层广告只在第一页显示的方法'
+date: 2010-5-20
+wordpress_id: 90
+permalink: /blogs/90
+comments: true
+---
+例：需要将“楼层广告[帖子右侧]”的广告只在帖子阅读页第一页显示，而不在其它比如第二页，第三页显示；
+
+修改方法：
+
+查找template/wind/read.htm下
+<blockquote>list($htmlAdvert,$arrayAdvert) = pwAdvert('Mode.Forum.Layer.TidRight',$fid,$key+1);</blockquote>
+将
+<blockquote>if($htmlAdvert){print &lt;&lt;&lt;EOT</blockquote>
+加入页面判断，如下：
+<blockquote>if($htmlAdvert &amp;&amp; $page == 1){print &lt;&lt;&lt;EOT</blockquote>
+OK，搞定，测试……

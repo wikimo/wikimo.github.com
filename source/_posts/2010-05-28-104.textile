@@ -1,0 +1,17 @@
+---
+layout: post
+title: '关于HTML页面锚点定位的方法'
+date: 2010-5-28
+wordpress_id: 104
+permalink: /blogs/104
+comments: true
+---
+<div id="_mcePaste">需求：如果HTML页面很长，需要点击某个超链接跳至相应段落，类似Word中从目录跳至相应文章段落。</div>
+<div id="_mcePaste">示例：</div>
+<blockquote>
+<div id="_mcePaste">&lt;!--创建锚点--&gt;</div>
+<div id="_mcePaste">&lt;a href="#test"&gt;Anchor&lt;/a&gt;</div></blockquote>
+<blockquote>
+<div id="_mcePaste">&lt;!--创建需要被跳至的位置--&gt;</div>
+<div id="_mcePaste">&lt;div id="test"&gt;This is content&lt;/div&gt;</div></blockquote>
+<div id="_mcePaste">说明：href里面的test 必须和div id中的test一致href="#test" ，id="test" 是必须的。</div>

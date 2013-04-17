@@ -1,0 +1,21 @@
+---
+layout: post
+title: '删除所有gem'
+date: 2011-7-10
+wordpress_id: 572
+permalink: /blogs/572
+comments: true
+---
+网上搜了一些命令执行下无效，写了shell脚本，执行下就可以了，在此分享下,参考自：http://liyq205.blog.163.com/blog/static/1303955662010423104320494/
+[c]
+#!/bin/bash
+#remove-all-gem 删除所有gem
+
+GEMS=`gem list --no-versions`
+#echo $GEMS
+for x in $GEMS;
+ do gem uninstall $x
+done
+
+echo ok....
+[/c]

@@ -1,0 +1,15 @@
+---
+layout: post
+title: '最土团购支付宝担保交易Demo'
+date: 2011-2-21
+wordpress_id: 450
+permalink: /blogs/450
+comments: true
+---
+现在支付宝即时到账业务申请有限制，对于个人团购站只能使用担保交易，最土团购1.6目前还不支持，因此需要修改支付宝接口。下载：<a href="http://blog.ai0573.com/wp-content/uploads/2011/04/alipayV1.1.zip">最土团购支付宝担保交易V1.1（UTF-8）</a>文件，覆盖根目录文件即可，后台设置保持原状，商家注册ID，对应的安全码就是相应的Key，以及对应的支付宝账号。
+文件包说明：
+1.order/pay.php为团购程序支付文件，其中判断alipay的位置为支付宝支持，修改此位置即可；
+2.order/alipayb目录为担保交易可能用到的相关文件，包括支付服务，相应的函数库，配置文件，回调文件等；
+3.include/template/order_check.html 修改了相应的模板文件
+
+注：此版本只演示了基本的支付功能，实际也基本满足原先即时到帐需求。

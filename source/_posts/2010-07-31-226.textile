@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'jquery getJson 跨域调用的说明'
+date: 2010-7-31
+wordpress_id: 226
+permalink: /blogs/226
+comments: true
+---
+在jquery api中提到,在使用getJson()方法进行跨域调用的时候,可以通过callback=?进行回调.新手在进行示例测试的时候可能会碰到测试不通过的情况.原因可能是json的输出格式有问题,在此以php为例进行说明.
+[php]
+$cb = $_GET[''callback];
+
+$json = &quot;{name:'wiki',age:24}&quot;;
+
+#print callback({name:'wiki',age:24})
+
+echo &quot;$cb($json)&quot;;
+[/php]
+
+那么返回客户端的json对象是如#print那样的,然后通过
+[javascript]
+$.getJson(&quot;url?callback=?&quot;,function(data){
+
+//deal with
+
+});
+[/javascript]
+
+便能测试通过了.

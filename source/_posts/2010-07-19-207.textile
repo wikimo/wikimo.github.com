@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'CSS中英文导航'
+date: 2010-7-19
+wordpress_id: 207
+permalink: /blogs/207
+comments: true
+---
+思路：和以往写css导航菜单类似，利用a伪类hover的时候，将隐藏层进行绝对定位。
+
+预览：
+
+<a href="http://www.wenotes.com/wp-content/uploads/2010/07/2010-07-19-21-15-38.jpg"><img class="alignnone size-full wp-image-208" title="2010-07-19 21 15 38" src="http://www.wenotes.com/wp-content/uploads/2010/07/2010-07-19-21-15-38.jpg" alt="" width="423" height="126" /></a>
+
+示例代码下载：<a href="http://www.wenotes.com/wp-content/uploads/2010/07/nav.zip">http://www.wenotes.com/wp-content/uploads/2010/07/nav.zip</a>

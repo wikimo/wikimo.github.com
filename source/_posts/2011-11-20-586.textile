@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'ruby学习笔记'
+date: 2011-11-20
+wordpress_id: 586
+permalink: /blogs/586
+comments: true
+---
+1.ruby 字符串分隔
+str = "abc:edf"
+str  = str.split(/:/)
+
+2.ruby 去除换行符
+str = str .chomp

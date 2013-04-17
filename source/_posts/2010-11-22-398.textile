@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'ecshop2.7.2去除版权信息的方法'
+date: 2010-11-22
+wordpress_id: 398
+permalink: /blogs/398
+comments: true
+---
+现象：修改对应模板下的page_footer.lbi模板去除相应的版权信息后，并未完全去除版权信息，此后会在页脚底部随机出现powered by ecshop
+
+其实个人认为没有必要去去除这些东西，毕竟人家也是开源的，保留些版权信息也应该的，只是有时候出于商业需求不得不去除。
+
+解决方案：修改js/common.js 262行左右位置
+
+onload=function(){}将此随机函数注释掉即可。

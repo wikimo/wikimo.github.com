@@ -1,0 +1,19 @@
+---
+layout: post
+title: 'QQ判断是否在线以及自定义图片的方式'
+date: 2010-6-7
+wordpress_id: 130
+permalink: /blogs/130
+comments: true
+---
+详细可以参考：<a href="http://wp.qq.com/helps.htm">http://wp.qq.com/helps.htm</a>
+
+1.判断是否在线的方法，在html页面中，加入
+<blockquote>
+<div id="_mcePaste">&lt;script&gt;var online= new Array();&lt;/script&gt;</div>
+<div id="_mcePaste">&lt;script src="http://webpresence.qq.com/getonline?Type=1&amp;1007554314:"&gt;&lt;/script&gt;</div></blockquote>
+以上是获取“1007554314”这个号码的在线状态，并将此状态储存在online数组中，如果online[0]=1在线，如果为0则不在线；
+
+至于自定义图片就是根据上述状态去加载不同的图了。
+
+代码演示见附件：<a href="http://www.wenotes.com/wp-content/uploads/2010/06/qq.zip">http://www.wenotes.com/wp-content/uploads/2010/06/qq.zip</a>

@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'dzx1.5 创始人添加'
+date: 2010-10-9
+wordpress_id: 335
+permalink: /blogs/335
+comments: true
+---
+修改根目录下config/config_global.php文件中的，
+1,2,3……为uid
+[php]$_config['admincp']['founder'] = '1';[/php]
+
+为
+
+[php]$_config['admincp']['founder'] = '1,2,3';[/php] 

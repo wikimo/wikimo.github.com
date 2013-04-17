@@ -1,0 +1,13 @@
+---
+layout: post
+title: '发一个数据库表数据比对工具'
+date: 2010-11-16
+wordpress_id: 391
+permalink: /blogs/391
+comments: true
+---
+发布一个数据库两表数据比对工具(PHP)
+
+功能描述：比对两个库中的相同结构表的记录，将重复记录写进一个临时表
+
+下载地址：<a href="http://www.wenotes.com/wp-content/uploads/2010/11/tbcompare.zip">http://www.wenotes.com/wp-content/uploads/2010/11/tbcompare.zip</a>

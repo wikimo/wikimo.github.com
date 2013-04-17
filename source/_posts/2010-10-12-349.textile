@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'Linux 端口被占用'
+date: 2010-10-12
+wordpress_id: 349
+permalink: /blogs/349
+comments: true
+---
+转载自：<a href="http://taoistwar.javaeye.com/blog/701704">http://taoistwar.javaeye.com/blog/701704</a>
+有时候关闭软件后，后台进程死掉，导致端口被占用。
+解决方法：
+1.查找被占用的端口
+[c]
+netstat -tln
+netstat -tln | grep 8083
+netstat -tln 查看端口使用情况，而netstat -tln | grep 8083 则是只查看端口8083的使用情况
+[/c]
+2.查看端口属于哪个程序？端口被哪个进程占用
+[c]lsof -i :8083[/c]
+
+
+3.杀掉占用端口的进程
+[c]kill -9 进程id[/c] 

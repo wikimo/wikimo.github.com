@@ -1,0 +1,38 @@
+---
+layout: post
+title: '关于html5 localstorage'
+date: 2011-12-24
+wordpress_id: 607
+permalink: /blogs/607
+comments: true
+---
+关于html5 localstorage的使用可以去google搜，现在已经有蛮多文章了，不过基本上的写的差不多。可以参考下
+<a href="http://www.jsmix.com/html5/localstorage.html" title="http://www.jsmix.com/html5/localstorage.html">http://www.jsmix.com/html5/localstorage.html</a>
+
+可以去搜下它的接口定义
+{% codeblock lang:c %}
+interface Storage {
+  readonly attribute unsigned long length;
+  DOMString? key(unsigned long index);
+  getter DOMString getItem(DOMString key);
+  setter creator void setItem(DOMString key, DOMString value);
+  deleter void removeItem(DOMString key);
+  void clear();
+};
+{% endcodeblock %}
+
+基本上就想个hash数组一样，有length,key,setItem,getItem,remvoeItem这些基本方法，对于简单的数据存储已经够用了。简单对象的存储可以参考上面提到的文章，类似这样：
+{% codeblock lang:javascript %}
+<script type="text/javascript">
+var user = {};
+user.name = 'Samuel';
+user.location = 'kunming';
+user.age = 32;
+// 添加
+localStorage.setItem( 'user', JSON.stringify(user));
+// 读取
+JSON.parse( localStorage.getItem( 'user' )) ;
+</script>
+{% endcodeblock %}
+
+最后说下调试，在FF中可以通过firebug dom下的localstorage进行查看，在chrome中，首次运行程序的时候可能无法用开发人员工具箱里面的resource localstorage查看，需要读取一次（比如读取下length属性）后才能够刷新查看，并且还能编辑删除，好了本人了解到的情况基本上就是这样。关于localstorage的时候，本人写了一个抽奖的小例子，地址：<a href="https://github.com/wikimo/reward-game" title="https://github.com/wikimo/reward-game">https://github.com/wikimo/reward-game</a>，有需要童鞋可以参考下。

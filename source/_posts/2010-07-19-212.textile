@@ -1,0 +1,17 @@
+---
+layout: post
+title: '多用户blog的选择'
+date: 2010-7-19
+wordpress_id: 212
+permalink: /blogs/212
+comments: true
+---
+因为项目需要，在网上找了一些，但总觉得不趁手。找来找去最后还是选了lxblog。国外的一些多用户blog或许在功能上来说比较完善，比较优秀了，但不一定适合国内，而且很多需要语言包支持。lxblog虽然不能说很好用，但相比之下凑合。基于php，由phpwind开发，不过目前已经停止开发。现在说下该程序一些常用功能：
+
+1.多用户，可以进行用户注册；
+
+2.首页用户相关信息展现,例新加入会员，新文章，文章排行，用户排行等；
+
+3.各用户可以独立管理自己的blog；
+
+具体可以在：<a href="http://www.phpwind.net/thread-htm-fid-21.html">http://www.phpwind.net/thread-htm-fid-21.html</a> 下载

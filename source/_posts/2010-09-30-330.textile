@@ -1,0 +1,27 @@
+---
+layout: post
+title: 'phpwind用户登录机制分析'
+date: 2010-9-30
+wordpress_id: 330
+permalink: /blogs/330
+comments: true
+---
+phpwind用户登录机制分析
+1.首先填写用户名密码，提交表单值login.php，通过$action == 'login'判定登录,
+[php]$logininfo = checkpass($pwuser, $md5_pwpwd, $safecv, $lgt);[/php]
+进行登录信息验证;
+
+2.调用require/checkpass.php下的checkpass()进行密码验证；
+
+3.在2过程中，通过，
+[php]
+require_once(R_P . 'uc_client/uc_client.php');
+$uc_user = uc_user_login($username, $password, $lgt);
+[/php]
+PHPwind有用户中心这么一个概念，类似Discuz Ucenter,通过用户中心去判定登录
+
+4.调用uc_client/uc_client.php中的uc_user_login()进行用户验证,在uc_data_request()方法中加载uc_client/model/user.php文件(类似一种函数重载的方法)，调用其中的login()方法进行登录验证，其中有几种验证登录方式，UID，Email,用户名，这里涉及一个用户中心同步概念，
+[php]$synlogin = $this-&gt;synlogin($user['uid'], $user['username'], $password);[/php]应该是对用户中心进行数据同步的
+最后返回一个user对象
+
+5.最终会返回到login.php文件中，进行写cookie操作，同时还有一个通行证操作；

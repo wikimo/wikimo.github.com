@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'rails devise以及用户管理相关的一些文章收集'
+date: 2011-6-3
+wordpress_id: 545
+permalink: /blogs/545
+comments: true
+---
+http://zyphmartin.com/blog/manage-users-with-devise-and-cancan
+
+https://github.com/plataformatec/devise/wiki/How-To:-Use-CanCan-+-Devise,-The-easy-way.
+
+http://zool.iteye.com/blog/712836
+
+http://zool.iteye.com/blog/713438
+
+http://asciicasts.com/episodes/192-authorization-with-cancan
+
+http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
+
+http://hlee.iteye.com/blog/673058
+
+http://cn.asciicasts.com/episodes/189-embedded-association
+
+http://hlee.iteye.com/blog/673058
+
+http://hlee.iteye.com/blog/673386
+
+https://github.com/plataformatec/devise

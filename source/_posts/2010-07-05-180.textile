@@ -1,0 +1,13 @@
+---
+layout: post
+title: '关于discuz x(dzx)在门户首页调用用户组的方法'
+date: 2010-7-5
+wordpress_id: 180
+permalink: /blogs/180
+comments: true
+---
+在模板文件中 写入
+{% codeblock %}
+$_G[group][grouptitle]
+{% endcodeblock %}
+即是用户组头衔，如：管理员，新手上路等

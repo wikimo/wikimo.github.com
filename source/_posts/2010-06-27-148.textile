@@ -1,0 +1,17 @@
+---
+layout: post
+title: '2.railscasts 动态find_by方法的使用'
+date: 2010-6-27
+wordpress_id: 148
+permalink: /blogs/148
+comments: true
+---
+{% codeblock %}def incomplete
+  #@tasks = Task.find(:all,:conditions=&gt;['complete = ?',false]);
+  @tasks = Task.find_all_by_complete(false)
+end
+def last_incomplete
+  #@task = Task.find(:first,:conditions=&gt;['complete = ?',false],:order=&gt;'createed_at DESC')
+  @task = Task.find_by_complete(false, :order =&gt;'created_at DESC')
+end{% endcodeblock %}
+以上两个方法中，用#注释的与被注释的其实执行效果类似，只是find_by方法的另一种简洁写法。

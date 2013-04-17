@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'phpwind如何添加友情链接'
+date: 2010-10-26
+wordpress_id: 357
+permalink: /blogs/357
+comments: true
+---
+后台》运营工具》友情链接》添加友情链接》 填写友情链接相关信息，这里需要注意下，显示顺序，即前台展现的时候看到的排列顺序，url地址一定得以http://开头，如果想要马上显示，选择“已审”，提交。OK完成了
+
+如果前台没有看到效果，在后台》模式设置》门户》点击更新，更新下首页缓存；
+
+具体操作参考图：
+<a href="http://www.wenotes.com/wp-content/uploads/2010/10/t.jpg"><img src="http://www.wenotes.com/wp-content/uploads/2010/10/t-300x171.jpg" alt="" title="t" width="300" height="171" class="alignnone size-medium wp-image-356" /></a>

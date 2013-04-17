@@ -1,0 +1,17 @@
+---
+layout: post
+title: '文件上传控件uploadify的学习使用'
+date: 2010-5-14
+wordpress_id: 68
+permalink: /blogs/68
+comments: true
+---
+一个uploadify文件上传的小例子，修改了自带演示示例；
+
+1.实现文件重命名，重命名方式为原始文件名+当前系统时间，并利用md5加密生成；
+
+2.返回客户端文件上传的相对路径，通过该控件本身的“onComplete”属性，添加相应的JS方法实现；
+
+3.上传中文名文件时出现乱码的问题；修改上传方法为
+<blockquote>move_uploaded_file($tempFile,iconv('utf-8','gbk', $targetFile));</blockquote>
+演示示例下载：<a href="http://www.wenotes.com/wp-content/uploads/2010/05/upload.zip">http://www.wenotes.com/wp-content/uploads/2010/05/upload.zip</a>

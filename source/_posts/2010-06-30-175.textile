@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'Rails对于遗留数据库的方法'
+date: 2010-6-30
+wordpress_id: 175
+permalink: /blogs/175
+comments: true
+---
+主要是一些表之间关系的映射，详细见：<a href="http://qa.taobao.com/?cat=22&amp;paged=2">http://qa.taobao.com/?cat=22&amp;paged=2</a>
+<div id="_mcePaste">Rails遗留数据库访问之一动态ORM               <a href="http://qa.taobao.com/?p=4405">http://qa.taobao.com/?p=4405</a></div>
+<div id="_mcePaste">Rails遗留数据库访问之二分库分表                 <a href="http://qa.taobao.com/?p=4419">http://qa.taobao.com/?p=4419</a></div>
+<div id="_mcePaste">Rails遗留数据库访问之三数据库编码自动转换 <a href="http://qa.taobao.com/?p=4427">http://qa.taobao.com/?p=4427</a></div>
+<div id="_mcePaste">Rails遗留数据库访问之四使用tdmodel插件    <a href="http://qa.taobao.com/?p=4430">http://qa.taobao.com/?p=4430</a></div>

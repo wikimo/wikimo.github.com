@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'mysql 数据迁移'
+date: 2011-10-8
+wordpress_id: 580
+permalink: /blogs/580
+comments: true
+---
+当磁盘空间不够用的时候，可能就需要对mysql数据目录进行迁移。对于mysql的数据迁移，可以直接将datadir数据目录进行拷贝，对于MyISAM类型的表直接拷贝没有问题，但对于InnoDB类型的直接拷贝过去，会有问题，可以看到表，但却没有数据，解决方法是需要将 ibdata之类的也拷贝过去，数据都是存储在这个里面的。
+还有一个问题就是注意新目录的文件夹权限以及拥有者，否则可能会无法读取数据。

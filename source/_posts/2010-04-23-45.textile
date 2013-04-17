@@ -1,0 +1,23 @@
+---
+layout: post
+title: '关于iframe标签在PHPWind编辑器中的问题'
+date: 2010-4-23
+wordpress_id: 45
+permalink: /blogs/45
+comments: true
+---
+在PHPWind中使用iframe HTML标签时，如果重新编辑帖子内容，在勾选Wind代码复选项的时候可能会引起iframe对应标签丢失的情况。解决方案如下：
+
+修改js/wind_c_editor.js中的WYSIWYD.needsClosingTag 方法
+{% codeblock %}
+WYSIWYD.needsClosingTag = function(el) {
+   var closingTags = " head script style div span tr td tbody table em strong font a title iframe ";
+   return (closingTags.indexOf(" " + el.tagName.toLowerCase() + " ") != -1);
+};
+{% endcodeblock %}
+
+切记iframe后面有空格，即
+{% codeblock %}
+iframe ";
+{% endcodeblock %}
+否从可能会报错。

@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'phpwind8.5编辑器默认所见即所得模式,非代码模式'
+date: 2011-5-12
+wordpress_id: 518
+permalink: /blogs/518
+comments: true
+---
+需求：如题，编辑器默认所见即所得模式，用户它不太明白UBB之类的标签，所以还是所见即所得模式比较好，直观。
+修改方法：
+template/wind/wysiwyg_editor.htm中查找以下代码，并替换掉即可
+
+[javascript]
+//通过cookie去记录用户选择的状态，直接强制default即可
+//'currentMode' : FetchCookie('editmode') == 1 ? 'default' : 'UBB', 
+'currentMode' :  'default', 
+[/javascript]
+
+以前的版块应该是通过post.php里面的$editor变量进行控制的
+[php]
+$editor = getstatus($winddb['userstatus'], PW_USERSTATUS_EDITOR) ? 'wysiwyg' : 'textmode';
+$editor = 'wysiwyg';#所见即所得模式
+[/php] 

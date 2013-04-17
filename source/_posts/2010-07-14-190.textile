@@ -1,0 +1,20 @@
+---
+layout: post
+title: 'php实现map的方法'
+date: 2010-7-14
+wordpress_id: 190
+permalink: /blogs/190
+comments: true
+---
+需求描述：利用php实现类似java中类似map的数据结构。
+
+示例：
+{% codeblock %}
+<?php
+$map = array();
+
+$map['k1']='val1';
+$map['k2']='val2';
+var_dump($map);
+?>
+{% endcodeblock %}

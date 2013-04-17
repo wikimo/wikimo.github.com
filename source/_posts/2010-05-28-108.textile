@@ -1,0 +1,17 @@
+---
+layout: post
+title: '关于多账号绑定数据丢失及恢复'
+date: 2010-5-28
+wordpress_id: 108
+permalink: /blogs/108
+comments: true
+---
+详细操作方法见本人在PHPWind官方论坛的帖子：
+
+<a href="http://www.phpwind.net/read-htm-tid-962330.html">http://www.phpwind.net/read-htm-tid-962330.html</a>，
+
+也可参考我写的文本文档操作说明：
+
+<a href="http://www.wenotes.com/wp-content/uploads/2010/05/readme.txt">http://www.wenotes.com/wp-content/uploads/2010/05/readme.txt</a>
+
+注：其实分析下数据库结构以及require\profile\modify.php文件就会有思路了。

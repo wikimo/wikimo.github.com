@@ -1,0 +1,21 @@
+---
+layout: post
+title: '删除Linux编译安装的软件'
+date: 2010-7-15
+wordpress_id: 197
+permalink: /blogs/197
+comments: true
+---
+转载自：<a href="http://blog.licess.org/uninstall-linux-soft/">http://blog.licess.org/uninstall-linux-soft/</a>
+直接运行下面的命令就行了。
+
+make   uninstall
+make   clean
+rm -rf mysql   //mysql目录
+
+如果是编译过程出错，要重新编译
+那就
+make clean
+然后再
+./configure
+make &amp;&amp; make install

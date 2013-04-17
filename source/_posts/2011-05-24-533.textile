@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'ztc ac560  刷B10固件，解决3G无法连接问题'
+date: 2011-5-24
+wordpress_id: 533
+permalink: /blogs/533
+comments: true
+---
+电信天翼3G网卡，型号为ZTC AC560，原始固件升级后会造成3G网络无法连接的问题，1X或许可以连接，不过速度缓慢。解决方案是将无线网卡的固件刷回B10这个版本，刷固件好像只能在台式机上操作，笔记本上没有com口子没法操作。通过Solo_DL_CDMA_6800M这个软件可以刷，刷完后，重新安装网卡，问题解决，比较折腾。所用到的工具软件比较难找，在此给大家分享下。具体操作见附近中的：AC560-B10刷机数据卡下载说明.doc，照做就行了。刷机软件可以通过Solo_DL_CDMA_6800MV1.00.04setup.zip安装，com口子我是自动识别的，不能识别见文档，文档有写。
+
+<a href="http://u.115.com/file/clwkk2xy" target="_blank">ac560刷机软件B10</a>

@@ -1,0 +1,23 @@
+---
+layout: post
+title: '一种简单的php敏感词过滤'
+date: 2010-12-22
+wordpress_id: 413
+permalink: /blogs/413
+comments: true
+---
+有些虚拟空间出现敏感词后，就直接给屏蔽了，连数据库都直接给屏蔽了，比较烦人，分享一种简单的敏感词过滤的方法
+[php]
+&lt;?php
+function filter_word($string) {  
+	$keywords= array(  
+		'棒' =&gt; 'bang',        
+		);  
+	return strtr($string, $keywords);  
+}  
+
+//return 肉bang肉bang
+echo filter_word('肉棒肉棒');
+?&gt;
+[/php]
+参考自：<a href="http://justcoding.javaeye.com/blog/659188">http://justcoding.javaeye.com/blog/659188</a>

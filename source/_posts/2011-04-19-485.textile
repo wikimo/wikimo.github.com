@@ -1,0 +1,33 @@
+---
+layout: post
+title: 'rails3 关于passenger_helper_server failed '
+date: 2011-4-19
+wordpress_id: 485
+permalink: /blogs/485
+comments: true
+---
+环境描述：
+
+rails3.0.7
+
+nginx 1.0.0
+
+passenger3.0.7
+
+centos
+
+遇到的问题：
+
+connect() to unix:/passenger_helper_server failed (2: No such file or directory)
+
+这个问题困惑了一天半，最终只能放弃，建议初级选手也别折腾了。改用nginx+thin的方式部署。
+
+nginx+thin的部署方式可以参考
+
+<a href="http://www.ziyue.info/%E5%AE%89%E8%A3%85nginx-thin%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AArails%E5%BA%94%E7%94%A8/">http://www.ziyue.info/%E5%AE%89%E8%A3%85nginx-thin%EF%BC%8C%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AArails%E5%BA%94%E7%94%A8/</a>
+
+<a href="http://blog.painiu.com/2010/09/1788.html">http://blog.painiu.com/2010/09/1788.html</a>
+
+<a href="http://blog.prosight.me/index.php/2009/07/265">http://blog.prosight.me/index.php/2009/07/265</a>
+
+<a href="http://glauche.de/2008/01/12/thin-nginx-with-rails/">http://glauche.de/2008/01/12/thin-nginx-with-rails/</a>

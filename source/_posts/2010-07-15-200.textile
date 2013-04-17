@@ -1,0 +1,26 @@
+---
+layout: post
+title: 'linux nginx 自动启动的方法'
+date: 2010-7-15
+wordpress_id: 200
+permalink: /blogs/200
+comments: true
+---
+首先说下手动启动nginx的方法：执行nginx目录下sbin/nginx即可，
+
+系统自动启动的方法：vim /etc/rc.local
+
+在该文件中写入类似语句
+
+/usr/local/webserver/nginx/sbin/nginx
+
+即可。当然也可以做进一步判断
+[c]
+if [ -x /usr/local/webserver/nginx/sbin/nginx]
+
+        then
+
+        /usr/local/webserver/nginx/sbin/nginx
+
+fi
+[/c] 

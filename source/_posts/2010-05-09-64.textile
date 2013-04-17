@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'WordPress中取消评论审核的方法'
+date: 2010-5-9
+wordpress_id: 64
+permalink: /blogs/64
+comments: true
+---
+审核评论在一定程度上能避免垃圾信息，但也操作繁琐。取消该设置的方法是
+
+后台》设置》讨论》在评论显示前选项 去掉“审核所有评论”，“评论者必须成功发表过评论”。OK，搞定。

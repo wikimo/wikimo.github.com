@@ -1,0 +1,12 @@
+---
+layout: post
+title: '1.railscasts关于缓存实例变量'
+date: 2010-6-27
+wordpress_id: 146
+permalink: /blogs/146
+comments: true
+---
+{% codeblock %}def current_user
+  @current_user ||= User.find(session[:user_id])
+end{% endcodeblock %}
+当current_user为空的时候去find，当其不为空的时候就不会去数据库查询了，从而达到缓存数据的目的

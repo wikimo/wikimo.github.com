@@ -1,0 +1,39 @@
+---
+layout: post
+title: 'rails on ruby 中 validates_confirmation_of的用法'
+date: 2010-5-15
+wordpress_id: 73
+permalink: /blogs/73
+comments: true
+---
+<div id="_mcePaste">validates_confirmation_of主要是用来进行确认输入验证的。例：新用户注册的时候，输入确认密码；</div>
+<div>假设模型层文件user.rb,那么在user.rb中加入</div>
+<div></div>
+<div>#确认密码的访问器，否则在模板层就无法读取（个人理解），'_confirmation'的写法是一种约定</div>
+<div>attr_accessor :pwd_confirmation</div>
+<div></div>
+<div>#密码，就是需要被确认的字段</div>
+validates_confirmation_of :pwd
+在模板层：
+<blockquote>&lt;p&gt;
+
+<span style="white-space: pre;"> </span>&lt;%= f.label :密码 %&gt;&lt;br /&gt;
+
+<span style="white-space: pre;"> </span>&lt;%= f.password_field :pwd %&gt;
+
+&lt;/p&gt;
+
+&lt;p&gt;
+
+<span style="white-space: pre;"> </span>&lt;%= f.label :确认密码 %&gt;&lt;br /&gt;
+
+<span style="white-space: pre;"> </span>&lt;%= f.password_field :pwd_confirmation %&gt;
+
+&lt;/p&gt;</blockquote>
+那么rails 在创建用户的时候便会自动检查两次输入是否一致。
+
+参考文章：
+
+<a href="http://lzqustc.javaeye.com/blog/328227">http://lzqustc.javaeye.com/blog/328227</a>
+
+<a href="http://www.javaeye.com/topic/155081">http://www.javaeye.com/topic/155081</a>

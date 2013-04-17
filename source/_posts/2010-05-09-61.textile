@@ -1,0 +1,11 @@
+---
+layout: post
+title: '推荐一款JQuery Tabs切换插件'
+date: 2010-5-9
+wordpress_id: 61
+permalink: /blogs/61
+comments: true
+---
+详细请点击：<a href="http://www.sunsean.com/idTabs/">http://www.sunsean.com/idTabs/</a>
+
+特点：简单易用，不用写多少javascript代码，只需稍微修改css样式。

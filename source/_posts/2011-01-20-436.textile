@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'phpwind多账号绑定批量更新账号密码'
+date: 2011-1-20
+wordpress_id: 436
+permalink: /blogs/436
+comments: true
+---
+描述：phpwind多账号绑定批量更新账号密码
+下载：<a href="http://www.wenotes.com/wp-content/uploads/2011/01/updatepw.zip">点击下载更新程序</a>

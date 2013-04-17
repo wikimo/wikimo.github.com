@@ -1,0 +1,18 @@
+---
+layout: post
+title: 'phpwind后台批量添加用户'
+date: 2011-1-28
+wordpress_id: 439
+permalink: /blogs/439
+comments: true
+---
+phpwind后台的用户添加功能，只能逐个添加用户，对于编辑同学来说有些麻烦。今儿给phpwind添加了一个批量添加用户的功能，通过txt文本上传添加的方式。
+不多说了，直接给修改文件，解压覆盖根目录就行。
+版本：phpwind8优化版
+下载地址：<br/>
+<a href="http://www.ihtml6.com/wp-content/uploads/2011/01/setusers.zip">点击下载8.0GBK</a>
+
+<a href='http://www.ihtml6.com/wp-content/uploads/2011/05/phpwind8.gbk_.zip'>点击下载8.5GBK</a>
+
+<a href='http://www.ihtml6.com/wp-content/uploads/2011/05/users.txt'>文本文件示例下载</a>
+

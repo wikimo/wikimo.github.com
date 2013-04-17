@@ -1,0 +1,26 @@
+---
+layout: post
+title: '关于Discuz数据合并至PHPWind的解决方案'
+date: 2010-5-6
+wordpress_id: 58
+permalink: /blogs/58
+comments: true
+---
+需求：需要将某个discuz论坛的数据合并至phpwind论坛里
+思路：将discuz先转成phpwind,再合并两个phpwind
+转换工具下载地址：<a href="http://www.phpwind.net/read-htm-tid-841883.html">http://www.phpwind.net/read-htm-tid-841883.html</a>（转换工具）
+<a href="http://www.phpwind.net/read-htm-tid-961998.html">http://www.phpwind.net/read-htm-tid-961998.html</a>（合并工具）
+
+注意点：
+1.由于之前官方的合并程序似乎有问题，在第44步附件转换的时候会出问题，目前官方已更新改该转换工具；
+2.转换的编码问题，这个可能是转换的时候比较头疼的问题。我的方法是phpmyadmin建库的时候制定相应编码，同时，可以选择新建的数据库进行建表测试核实编码；
+
+<img class="alignnone" src="http://www.wenotes.com/wp-content/uploads/2010/05/2010-05-06-11-18-37.jpg" alt="" width="457" height="97" />
+
+3.对于上述合并工具，本人在windows本次测试OK，但到linux服务器上后，合并前，两站都无乱码，合并后，次论坛数据有乱码，解决方法是修改合并工具core.php
+在起始位置直接写死编码类型S_query('set names gbk');
+4.在转换之前需要将次论坛attachment下的upload及cn_img文件夹复制到合并工具(75unit)根目录下；
+5.linux需要注意各文件夹的读写权限，可用chmod -R 555 dir 修改，需要保证主论坛attachment,次论坛attachment以及合并工具目录（75unit）可读写
+6.最后需要将次论坛attachment下所有文件复制到主论坛attachment，一般示例：cp -rf /sub/attachment/* /main/attachment/
+
+本人使用的合并工具，支持GBK：<a href="http://www.wenotes.com/wp-content/uploads/2010/05/75unit.zip">http://www.wenotes.com/wp-content/uploads/2010/05/75unit.zip</a>

@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'phpwind8用户管理模糊查询小bug'
+date: 2010-11-12
+wordpress_id: 376
+permalink: /blogs/376
+comments: true
+---
+bug描述：查询比如以 “pw_”开头的用户名时，结果集不正确，引起该问题的原因是："_"下划线被当成了通配符，详见：<a href="http://www.cnblogs.com/Render/archive/2008/08/01/1258086.html">http://www.cnblogs.com/Render/archive/2008/08/01/1258086.html</a>
+
+临时解决方案：
+修改admin/setuer.php下,（删除用户对应文件在admin/superdel.php）
+[php]$sql .= &quot; AND (m.username LIKE &quot;.pwEscape($t_schname).')';[/php]
+为
+
+[php]
+if(strpos($t_schname,&quot;_&quot;)){
+ $t_schname =str_replace(&quot;_&quot;,&quot;\_&quot;,$t_schname);
+}
+$sql .= &quot; AND (m.username LIKE '$t_schname')&quot;;
+[/php]
+
+PS：感谢phpwind客服 QQ：5242132 共同探讨，解决改问题……

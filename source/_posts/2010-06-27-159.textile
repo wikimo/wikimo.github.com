@@ -1,0 +1,19 @@
+---
+layout: post
+title: '3.railscasts通过关系进行数据查询'
+date: 2010-6-27
+wordpress_id: 159
+permalink: /blogs/159
+comments: true
+---
+{% codeblock %}def show
+  @project = Project.find(params[:id])
+  @tasks = @project.tasks.find_all_by_complete(false)
+end
+ 
+
+{% endcodeblock %}
+project与tasks的对应关系可能是父子关系，通过返回的project对象示例去加载task的相关数据项，当然也可以通过
+@project.tasks.find的方式进行加载
+ 
+

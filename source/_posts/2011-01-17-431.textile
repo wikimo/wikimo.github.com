@@ -1,0 +1,11 @@
+---
+layout: post
+title: '[转载]手机号码IP地址归属地查询'
+date: 2011-1-17
+wordpress_id: 431
+permalink: /blogs/431
+comments: true
+---
+详情点击：<a href="http://yoursunny.com/work/MobileIPquery/" target="_blank">http://yoursunny.com/work/MobileIPquery/</a>
+
+注：调用的数据相对比较准确，可将改功能加以改造并应用于本地论坛及门户站的用户注册控制上来，防止恶意注册，控制垃圾信息。

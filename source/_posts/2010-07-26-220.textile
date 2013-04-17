@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'rails 关于时间日期的操作'
+date: 2010-7-26
+wordpress_id: 220
+permalink: /blogs/220
+comments: true
+---
+获取系统当前时间：Time.now
+
+获取当前日期的前一天：Date.today - 1,Date.yesterday
+
+获取当前日期的下一天：Date.today + 1 , Date.today.next,1.day.from_now
+
+获取2天前的时间：2.days.ago
+
+格式化时间：Time.now.strftime('%Y%m%d%h%m%s') 返回一个串

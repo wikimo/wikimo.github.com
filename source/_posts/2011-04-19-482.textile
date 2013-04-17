@@ -1,0 +1,9 @@
+---
+layout: post
+title: 'rails3 devise undefined local variable or method root_path'
+date: 2011-4-19
+wordpress_id: 482
+permalink: /blogs/482
+comments: true
+---
+解决方法：routes配置文件中指定 root:to

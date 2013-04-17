@@ -1,0 +1,20 @@
+---
+layout: post
+title: '发一种JS侧栏客服效果'
+date: 2010-11-15
+wordpress_id: 383
+permalink: /blogs/383
+comments: true
+---
+效果描述：侧栏收缩在浏览器右侧，鼠标移上去后展开，移开后关闭折叠
+
+代码源自互联网，本人加以整理改造。
+
+预览：
+<img title="2010-11-15 12 31 38" src="http://www.wenotes.com/wp-content/uploads/2010/11/2010-11-15-12-31-38.png" alt="" width="241" height="272" />
+
+演示：<a href="http://bbs.rodin.cn/">http://bbs.rodin.cn/</a>
+
+代码：<a href="http://www.wenotes.com/wp-content/uploads/2010/11/rodinqq.zip">http://www.wenotes.com/wp-content/uploads/2010/11/rodinqq.zip</a>
+<div><span style="color: #0000ee; -webkit-text-decorations-in-effect: underline;">
+</span></div>

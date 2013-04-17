@@ -1,0 +1,13 @@
+---
+layout: post
+title: '推荐一款本地文件快速搜索软件Everything'
+date: 2010-7-28
+wordpress_id: 224
+permalink: /blogs/224
+comments: true
+---
+功能描述：可以快速搜索你当前计算机上的文件并进行快速定位。
+
+下载地址：<a href="http://www.greendown.cn/soft/14266.html">http://www.greendown.cn/soft/14266.html</a>
+
+更多介绍请看：<a href="http://xbeta.info/everything-search-tool.htm">http://xbeta.info/everything-search-tool.htm</a> 上面已经写的很详细了，我就不再啰嗦了

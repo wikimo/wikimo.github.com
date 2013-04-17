@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'mysql中修改自增主键起始值的方法'
+date: 2010-6-2
+wordpress_id: 114
+permalink: /blogs/114
+comments: true
+---
+执行sql
+
+alter table 表名 auto_increment = 地增值
+
+例：
+
+alter table test auto_increment = 200
+
+那么执行insert的时候系统自动产生的id值就从200开始了，而不是默认从1开始。

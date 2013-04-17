@@ -1,0 +1,108 @@
+---
+layout: post
+title: '用C#解Excel题'
+date: 2011-4-24
+wordpress_id: 498
+permalink: /blogs/498
+comments: true
+---
+当有时候碰见相对比较复杂的Excel问题，使用Excel的内置函数无法解的时候，你可能会考虑到用VBA创建个自定义函数来解决。当然这是一种方案，不过你得使用VB来解，在实际操作中，个人感觉用C#之类的语言去解会更快速一点。本人对VB，以及vbscript了解的不多，感觉对于数组、集合等的一些操作VB都需要自己去实现，相对于C#这种内置了很多数组，集合的语言来说操作会比较繁琐些。对于C#来说只需要.net framework的支持，我想现在很多windows的机器上基本都带了，没有的话装也很快。当然对于C#之类的不熟悉，也可以考虑PHP之类的语言也能解，感觉也会比VBA好解，只是支持环境相对于.net framework来说相对麻烦。总之，要用熟悉的工具，趁手的工具来解决问题这才是关键。
+以下是一个用C#解决Excel的一个示例：
+问题描述：从"A","B","C","D","E","F","G" 这几列中找出不小于标准值S的列值，并去掉最大最小值，最后求算术平均数。如果只有一行，手动算算也很快，但是有上千行就麻烦了。这样的需求Excel没有内置的函数可用，需要自己写代码。对于C#来说这样的需求很容易解。再次提供一种思路，用一个集合列表存储每列的值，移除小于标准值S的列值，然后集合列表内置排序下，去掉最后一位，第一位，就是去掉最大最小值，最后求下平均值。很常规的思路。
+[java]
+/*
+ * Created by SharpDevelop.
+ * User: Wiki.M
+ * Date: 2011-3-30
+ * Time: 16:08
+ * 
+ * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ */
+using System;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
+using Microsoft.Office.Interop.Excel;
+
+namespace demo
+{
+	class MainClass
+	{
+		
+		public static void Main(string[] args)
+		{
+		
+			//创建Application对象   
+			Microsoft.Office.Interop.Excel.Application xApp= new Microsoft.Office.Interop.Excel.ApplicationClass();
+			xApp.Visible=true;   
+
+			//得到WorkBook对象
+			Microsoft.Office.Interop.Excel.Workbook xBook=xApp.Workbooks._Open(@&quot;E:\excel\demo\sample.xls&quot;,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value);  
+			//得到WorkSheet对象
+			Microsoft.Office.Interop.Excel.Worksheet xSheet=(Microsoft.Office.Interop.Excel.Worksheet)xBook.Sheets[1];   
+			
+			//Excel对应的列名
+			String[] column =  {&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;};
+			//Excel列转换后的值,列表存储
+			//double[] inputData = new double[7];
+			List&lt;double&gt; inputData = new List&lt;double&gt;();
+			
+			//比较参考值
+			double flag = 35.0 * 80 / 100;
+			
+			//获取Eexcel列数据，储存至inputData
+			for(int i = 0;i &lt; column.Length;i++){
+				Microsoft.Office.Interop.Excel.Range rng=xSheet.get_Range(column[i] + &quot;1&quot;,Type.Missing);
+				inputData.Add(Convert.ToDouble(rng.Value2.ToString()));
+			}
+			
+			//删除小于标准值的元素并剔除最大最小值
+			inputData =  removeSpecialElement(inputData,flag);
+			
+			double sum = 0.0;
+			double result = 0.0;
+			foreach(double i in inputData){
+				sum += i;			
+			}
+			result =  Math.Round(sum / inputData.Count,2);
+ 
+			//将结果写入Excel I1列
+			Microsoft.Office.Interop.Excel.Range rng2 = xSheet.get_Range(&quot;I1&quot;,Missing.Value);  
+			rng2.Value2 = result;  
+			rng2.Interior.ColorIndex=6; //设置Range的背景色  
+			
+			//保存Excel
+			xBook.Save();  
+			xApp.Quit(); 
+			
+			//释放资源
+			xSheet = null;  
+			xBook = null;  
+			xApp = null;  
+		}
+		
+		
+		
+		
+		/// &lt;summary&gt;
+		/// List列表删除小于standard的值
+		/// &lt;/summary&gt;
+		/// &lt;param name=&quot;a&quot;&gt;&lt;/param&gt;
+		/// &lt;param name=&quot;standard&quot;&gt;&lt;/param&gt;
+		/// &lt;returns&gt;&lt;/returns&gt;
+		public static List&lt;double&gt; removeSpecialElement(List&lt;double&gt; a,double standard){
+			for(int i =  a.Count -1; i &gt;= 0;i--){
+				if(a[i] &lt; standard)
+					a.RemoveAt(i);
+			}
+			
+			a.Sort();
+			a.RemoveAt(a.Count - 1);
+			a.RemoveAt(0);
+			
+			return a;	
+		}
+	}
+}
+
+[/java] 

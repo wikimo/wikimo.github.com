@@ -1,0 +1,42 @@
+---
+layout: post
+title: 'redis for php 安装'
+date: 2011-7-10
+wordpress_id: 568
+permalink: /blogs/568
+comments: true
+---
+一、redis的安装
+
+1.wget http://redis.googlecode.com/files/redis-2.2.11.tar.gz 下载最新版的redis；
+
+2.tar zxvf  redis-2.2.11.tar.gz 解压；
+
+3.cd redis-2.2.11 进入目录后，可以more INSTLL查看安装细节；
+
+4.之后只要make 然后make install即便安装完成。
+
+5.redis的启动方式是 redis-server  redis.conf
+
+6.安装完毕后redis.conf的配置文件可能需要从安装源文件里面拷贝出来，比如拷贝到/etc/redis.conf
+
+7.查看下redis.conf里面有是否从后台运行的方式，可以修改下yes;
+
+二、redis php库的扩展安装
+1.选了phpredis这个库，可以从github上去下载；
+
+2.首先安装下git;
+
+3.git clone https://github.com/owlient/phpredis 将安装文件下载到本地；
+
+4.cd phpredis 进入安装文件目录；
+
+5.phpize下；phpize根据自己的实际目录来；
+
+6. ./configure --with-php-config=/usr/local/php/bin/php-config  这里的php-config是打个比方，根据自己实际配置来；
+
+7. make && make install;
+
+8.然后修改下php.ini文件，去加载extension=redis.so扩展，可以根据实际配置写全路径；
+
+9.用phpinfo函数测试下是否安装成功；

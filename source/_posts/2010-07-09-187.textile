@@ -1,0 +1,15 @@
+---
+layout: post
+title: '关于javascript 本地数据存储的问题'
+date: 2010-7-9
+wordpress_id: 187
+permalink: /blogs/187
+comments: true
+---
+javascript主要是一个基于客户端的语言，并不能直接地去操纵数据库，但是我们平时利用javascript写一些小的应用的时候可能会涉及数据存储的问题。简单的数据文本存储可以利用txt文本文档的方式，通过IO读写，然后这种方案可能只在IE下支持。这显然不是一种好的解决方案。
+
+于是，突然有了一种遐想，用javascript去实现模拟常见的数据库操作。不过后来，朋友推荐了<a href="http://gears.google.com/" target="_blank">google gears</a> ,可以通过安装浏览器插件来实现本地数据的存储，该数据的存储是基于sqlite的，个人觉得就是对sqlite的一种封装，通过<a href="http://gears.google.com/" target="_blank">google gears</a> 开发的javascript api来进行数据操作，可参见：<a href="http://code.google.com/intl/zh-CN/apis/gears/api_database.html">http://code.google.com/intl/zh-CN/apis/gears/api_database.html</a>
+
+当然<a href="http://gears.google.com/" target="_blank">google gears</a>的功能还不止这些，还包括<a href="http://code.google.com/intl/zh-CN/apis/gears/api_localserver.html">LocalServer</a> ，<a href="http://code.google.com/intl/zh-CN/apis/gears/api_workerpool.html">WorkerPool</a> 等功能模块。具体的使用示例可以参考：
+
+<a href="http://www.ibm.com/developerworks/cn/web/wa-lo-googlegears/">http://www.ibm.com/developerworks/cn/web/wa-lo-googlegears/</a>

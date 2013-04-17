@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'ArchLinux Filesystem check failed'
+date: 2011-4-26
+wordpress_id: 503
+permalink: /blogs/503
+comments: true
+---
+ArchLinux启动出现
+<blockquote>
+Filesystem check failed.
+Please repair manually and reboot. Note that the root file system is currently mounted readonly. To remount it read-write type: mount -n -o remount  ,rw /
+When you exit the maintenance shell the system will reboot automatically
+</blockquote>
+
+可能是时间设置不正确引起的。
+

@@ -1,0 +1,13 @@
+---
+layout: post
+title: '点击QQ空间图标，显示空白页（转）'
+date: 2011-4-3
+wordpress_id: 477
+permalink: /blogs/477
+comments: true
+---
+现象描述：点击QQ上面的图标，比如QQ空间，QQ邮箱，显示空白页，无法跳转至相应的页面；
+解决方案：
+具体方法如下：在IE浏览器中点击“工具”-->“Internet选项”-->“程序”选项卡，在“默认的Web浏览器”中点选设为默认值，并且把“如果Internet Explorer不是默认浏览器，提示我。”前面勾选上，确定。OK，搞定
+
+原帖地址：<a href="http://blog.csdn.net/bobo0421/archive/2009/05/25/4215511.aspx">点击QQ面板上的图标(如QQ邮箱，QQ空间等)链接打开的是默认主页的问题</a>

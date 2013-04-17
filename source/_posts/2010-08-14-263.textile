@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'discuz6.1转phpwind 在第15步出错的问题'
+date: 2010-8-14
+wordpress_id: 263
+permalink: /blogs/263
+comments: true
+---
+现象：discuz6.1转phpwind 7.5 sp3时，在step 15时，即在消息数据转换的时候出现sql报错。类似
+
+[sql]REPLACE IGNORE INTO pw_msg (mid,touid,fromuid,username,type,ifnew,mdate)[/sql]
+
+解决方法：修改转换程序目录下source\discuz61\do.php 1175行左右位置的sql，即上述sql位置，将“IGNORE”去掉，可能下面几个sql脚本也要做相应的修改。
+
+见图：<a href="http://www.wenotes.com/wp-content/uploads/2010/08/2010-08-14-16-18-59.jpg"><img class="alignnone size-medium wp-image-265" title="2010-08-14 16 18 59" src="http://www.wenotes.com/wp-content/uploads/2010/08/2010-08-14-16-18-59-300x168.jpg" alt="" width="300" height="168" /></a>

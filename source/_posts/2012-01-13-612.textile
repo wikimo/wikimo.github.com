@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'Nexus s（9020） 紧急呼叫 无服务 解决方案（理论上适用于其它机型）'
+date: 2012-1-13
+wordpress_id: 612
+permalink: /blogs/612
+comments: true
+---
+基本的方案就是刷基带，然后用root explorder之类的工具，进入/efs/文件夹删除nv.log nv_data.bin nv_data.bin.md5重启试试，如果再不行，接着再刷当前ROM，基本这样就解决了。
+基带为何处：用来处理手机信号的东西，好比上网的ADSL猫
+自己的机器信号问题就是这么解决的

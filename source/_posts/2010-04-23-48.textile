@@ -1,0 +1,15 @@
+---
+layout: post
+title: '基于CSS、JS两层导航示例'
+date: 2010-4-23
+wordpress_id: 48
+permalink: /blogs/48
+comments: true
+---
+说明：主导航＋子导航　两层菜单展现，见图预览。
+
+JS+CSS方式展现，JS代码不多，总共才20几行代码，方便新手使用。
+
+<a href="http://www.wenotes.com/wp-content/uploads/2010/04/2010-04-23-15-53-33.jpg"><img class="alignnone size-medium wp-image-49" title="2010-04-23 15 53 33" src="http://www.wenotes.com/wp-content/uploads/2010/04/2010-04-23-15-53-33-300x121.jpg" alt="" width="300" height="121" /></a>
+
+代码下载地址：<a href="http://www.wenotes.com/wp-content/uploads/2010/04/tabsnav.zip" target="_blank">http://www.wenotes.com/wp-content/uploads/2010/04/tabsnav.zip</a>

@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'mysql 无法启动'
+date: 2011-10-8
+wordpress_id: 582
+permalink: /blogs/582
+comments: true
+---
+现象：通过/etc/init.d/mysqld start 无法启动
+可能是mysqld这个脚本文件里面的mysql路径有问题，用vim之类的工具打开下修改下路径保存，应该就可以了。

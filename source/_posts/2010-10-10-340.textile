@@ -1,0 +1,15 @@
+---
+layout: post
+title: '推荐一款flash反编译软件'
+date: 2010-10-10
+wordpress_id: 340
+permalink: /blogs/340
+comments: true
+---
+软件名：Sothink SWF Decompiler
+
+下载地址：<a href="http://u.115.com/file/f3f866fcbe">http://u.115.com/file/f3f866fcbe</a>
+
+具体怎么用就不介绍了，很简单，解压安装就行了。威力强大，直接将flash转换成*.fla文件
+
+PS：如无法下载请联系gwikimo@gmail.com,或留言

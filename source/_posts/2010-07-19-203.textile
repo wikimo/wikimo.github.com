@@ -1,0 +1,52 @@
+---
+layout: post
+title: '很强大的javascript列表滚动（三行代码搞定）'
+date: 2010-7-19
+wordpress_id: 203
+permalink: /blogs/203
+comments: true
+---
+转载自：<a style="display: inline !important;" href="http://www.codefans.net/jscss/code/1559.shtml">http://www.codefans.net/jscss/code/1559.shtml</a>
+
+
+[html]
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;新闻滚动&lt;/title&gt;
+&lt;style&gt;
+a{display:block;line-height:18px;text-decoration:none;color:#555;font-family:Arial;font-size:12px;}
+.shell{
+	background:url(http://www.codefans.net/jscss/demoimg/200902/arrowb.gif) no-repeat 4px 5px;
+	border:1px solid #aaa; 
+	width:230px;
+	padding:3px 2px 2px 26px; 
+}
+#div1{
+	height:18px;
+	overflow:hidden;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;shell&quot;&gt;
+	&lt;div id=&quot;div1&quot;&gt;
+	  &lt;a href=&quot;javascript:&quot;&gt;jQuery的图片滚动切换插件&lt;/a&gt;
+	  &lt;a href=&quot;javascript:&quot;&gt;Mootools slider 滚动条拖动取值的实现 &lt;/a&gt;
+	  &lt;a href=&quot;javascript:&quot;&gt;VB开发的Eclipse编程软件完整版&lt;/a&gt;
+	  &lt;a href=&quot;javascript:&quot;&gt;VC++生成随机数并快速排序的算法&lt;/a&gt;
+	  &lt;a href=&quot;javascript:&quot;&gt;VB语音报数计算器源程序&lt;/a&gt;
+	&lt;/div&gt; 
+&lt;div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+var c,_=Function;
+with(o=document.getElementById(&quot;div1&quot;)){ innerHTML+=innerHTML; onmouseover=_(&quot;c=1&quot;); onmouseout=_(&quot;c=0&quot;);}
+(F=_(&quot;if(#%18||!c)#++,#%=o.scrollHeight&gt;&gt;1;setTimeout(F,#%18?10:1500);&quot;.replace(/#/g,&quot;o.scrollTop&quot;)))();
+&lt;/script&gt;
+&lt;/html&gt;
+
+
+[/html] 

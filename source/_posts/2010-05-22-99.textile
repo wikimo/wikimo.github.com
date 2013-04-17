@@ -1,0 +1,32 @@
+---
+layout: post
+title: '关于PHPWind面包屑导航的自定义修改'
+date: 2010-5-22
+wordpress_id: 99
+permalink: /blogs/99
+comments: true
+---
+需求：
+主网站下集成了子站，面包屑导航如“主首页》版块一”针对“首页”链接后台只能设置一次，如何才能实现“次首页》版块二”的需求？
+思路：
+修改require/forum.php里面的headguide()方法，与以前类似，可以重新复制一份改方法，修改参数列表headguide()，如jx09_headguide($guidename,$onmouseover=true,$jx09_bbslink)，添加$jx09_bbslink，加入如下的判断
+然后可以定义一个数组，存储需要添加的自定义链接，截图$guidename串，进行判断是否需要加入自定义链接,以下代码可以写入一个php文件，在thread.php或read.php中进行require_once
+[php]
+$temp_bbsname = substr($guidename,0,strpos($guidename,'&amp;raquo;'));
+$jx09_bbsname_check = array('测试','AA');
+$jx09_bbsname_info =array('http://www.test.com/','http://www.aa.cn');
+foreach($jx09_bbsname_check as $k =&gt; $v){
+	if(strpos($temp_bbsname,$v) !== false){
+		$current_index = $k;
+		break;
+	}
+}
+//如果存在自定义链接，调用相应的改写方法，否则默认调用
+if($jx09_bbsname_info[$current_index]){
+	$msg_guide = jx09_headguide($guidename,true,$jx09_bbsname_info[$current_index]);
+}else{
+	$msg_guide = headguide($guidename);
+}
+[/php]
+当然在帖子发表，修改，回复页也需要做相应的修改，方法同上类似，如果闲麻烦可以不做修改
+以上核心步骤，OK，搞定，测试。

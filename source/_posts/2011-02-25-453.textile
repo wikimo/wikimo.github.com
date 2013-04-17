@@ -1,0 +1,32 @@
+---
+layout: post
+title: '基于php的txt文本文档gbk与utf8编码转换'
+date: 2011-2-25
+wordpress_id: 453
+permalink: /blogs/453
+comments: true
+---
+需要将utf8的txt转换成gbk的txt，通过editplus另存为无法解决，google了下没有好的转换工具，于是利用php简单实现了下。废话不多说，见代码：
+[php]
+&lt;?php
+echo &quot;转换开始....&lt;br/&gt;&quot;;
+
+$fromFile=&quot;u1.txt&quot;;//源文件
+$toFile = &quot;g2.txt&quot;;//目标文件
+
+$fpA=fopen($fromFile,'r');
+$output = '';
+while(!feof($fpA)){
+	$buffer=fgets($fpA,4096);
+	$buffer = iconv(&quot;UTF-8&quot;,&quot;gbk//IGNORE&quot;, $buffer) ;
+	$output .=&quot;$buffer&quot;;
+}
+$fpB=fopen($toFile,&quot;w&quot;);
+fwrite($fpB,$output);
+
+fclose($fpA);
+fclose($fpB);
+
+echo &quot;转换结束....&lt;br/&gt;&quot;;
+?&gt;
+[/php]

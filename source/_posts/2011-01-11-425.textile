@@ -1,0 +1,16 @@
+---
+layout: post
+title: 'linux 批量替换文件字符'
+date: 2011-1-11
+wordpress_id: 425
+permalink: /blogs/425
+comments: true
+---
+当站点被挂马后，可能所有的*.htm页面都被注入了iframe之类或者js之类的垃圾代码，手动清除很繁琐，可以通过linux快速批量删除
+
+[c]
+find /var/www/html -type f  -name &quot;*.htm&quot; -exec   sed  -i  's#目标字符串#替换后字符#g'  {} \;
+
+#删除/var/www/html下所有*.htm文件中的muma字符串
+find /var/www/html -type f  -name &quot;*.htm&quot; -exec   sed  -i  's#muma##g'  {} \;
+[/c] 

@@ -1,0 +1,12 @@
+---
+layout: post
+title: '图片在IE浏览器下无法显示的问题'
+date: 2010-4-21
+wordpress_id: 12
+permalink: /blogs/12
+comments: true
+---
+<div id="_mcePaste">现象：有时通过论坛发帖或者自己Blog上传图片的时候，部分图片无法正常显示，只有一个红叉，其它图片正常。</div>
+<div id="_mcePaste">原因：图片本身格式问题，IE下CMYK模式的图片无法显示，支持RGB模式</div>
+<div id="_mcePaste">解决方案：用photoshop之类的图形软件打开图片》 图像》模式》RGB颜色 》保存》重新上传》OK</div>
+<div id="_mcePaste">注：Firefox ,Chrome 等浏览器并无影响，可见是该放弃IE了……</div>

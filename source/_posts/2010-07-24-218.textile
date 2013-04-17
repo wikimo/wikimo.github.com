@@ -1,0 +1,22 @@
+---
+layout: post
+title: '推荐一文档工具txt2tags'
+date: 2010-7-24
+wordpress_id: 218
+permalink: /blogs/218
+comments: true
+---
+该工具是用python开的，可以将txt标记的文档转换为html等其它格式的文档。如
+
+doc.txt文本文档，内容为
+<div id="_mcePaste">author  :   wiki, wiki@jx09.com</div>
+<div id="_mcePaste">since   :   2010-7-21</div>
+=标题=
+
++ 小标题测试 +
+
+然后可以通过txt2tags转换成html的文档。
+
+详细介绍入门：<a href="http://txt2tags.sourceforge.net/zh/manpage-zh.html">http://txt2tags.sourceforge.net/zh/manpage-zh.html</a>
+
+标记使用方法可以参考：<a href="http://txt2tags.sourceforge.net/docs.html">http://txt2tags.sourceforge.net/docs.html</a>

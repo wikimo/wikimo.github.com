@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'httpd 0x007dac6a 0x00000014 error'
+date: 2010-10-4
+wordpress_id: 333
+permalink: /blogs/333
+comments: true
+---
+解决方案：本人测试拷贝了libmysql.dll，ext/php_gd2.dll,ext/php_mbstring.dll,ext/php_mysql.dll,至c:/windows/system32
+
+转载：<a href="http://dennisbing.javaeye.com/blog/375948">http://dennisbing.javaeye.com/blog/375948</a>

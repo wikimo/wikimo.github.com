@@ -1,0 +1,9 @@
+---
+layout: post
+title: '推荐一款图表工具http://www.fusioncharts.com/'
+date: 2010-9-6
+wordpress_id: 290
+permalink: /blogs/290
+comments: true
+---
+详见：<a href="http://www.fusioncharts.com/">http://www.fusioncharts.com/</a>
