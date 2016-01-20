@@ -2,8 +2,8 @@ permalink   : /:categories/:year/:title/
 markdown    : kramdown
 highlighter : pygments
 
-paginate: 2 #6
-comments: true
+paginate: 10 #6
+comments: false
 paginate_path: "/page/:num"
 
 source: source
@@ -13,30 +13,25 @@ sass:
   style: compressed
 
 # Site settings
-title: Lora
-description: "A free Jekyll theme"
-email: your-email@domain.com
+title: Wikimo's Note
+description: "me.each do |devel| … !end."
+email: gwikimo@gmail.com
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://yourdomain.com"
-url: "http://nandomoreira.me/lora"
-repository: "https://github.com/nandomoreirame/lora"
-disqus_shortname: "fernandomoreira"
-google_analytics: UA-52446115-1
+url: "http://wikimo.net"
+repository: "https://github.com/wikimo"
+disqus_shortname:
+google_analytics: 
+cname: 'wikimo.net'
 
 # social footer
 social:
   github:
     slug: github
-    link: http://github.com/nandomoreirame
-  facebook:
-    slug: facebook
-    link: http://facebook.com/fernando.dev
+    link: http://github.com/wikimo
+  # facebook:
+  #   slug: facebook
+  #   link: 
   twitter:
     slug: twitter
-    link: http://twitter.com/nandomoreirame
-  instagram:
-    slug: instagram
-    link: http://instagram.com/nandomoreira.me
-  linkedin:
-    slug: linkedin
-    link: http://linkedin.com/in/nandomoreirame
+    link: http://twitter.com/gwikimo

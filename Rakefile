@@ -5,8 +5,8 @@ require "bundler/setup"
 require "jekyll"
 
 # Change your GitHub reponame
-GITHUB_REPONAME    = "nandomoreirame/lora"
-GITHUB_REPO_BRANCH = "gh-pages"
+GITHUB_REPONAME    = "wikimo/wikimo.github.com"
+GITHUB_REPO_BRANCH = "master"
 
 SOURCE = "source/"
 DEST   = "_site"
@@ -22,12 +22,17 @@ task default: %w[publish]
 
 desc "Generate blog files"
 task :generate do
-  Jekyll::Site.new(Jekyll.configuration({
+  config = Jekyll.configuration({
     "source"      => "source/",
     "destination" => "_site",
     "config"      => "_config.yml"
-  })).process
-end
+  })
+  Jekyll::Site.new(config).process
+
+  File.open('_site/CNAME', 'w+') do |cname|
+    cname.puts config['cname']
+  end  
+end 
 
 desc "Generate and publish blog to gh-pages"
 task :publish => [:generate] do

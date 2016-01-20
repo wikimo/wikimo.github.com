@@ -1,0 +1,22 @@
+---
+layout: post
+title: "OS X 下brew的一些技巧"
+date: 2014-04-20 13:53
+comments: true
+categories: 
+---
+
+主要是为了做个标记，记录下平时使用的一些技巧
+
+### brew install specific version of formula 
+* brew安装指定版本的软件
+* brew versions node #查看软件的版本列表；
+* git checkout 83988e4 Library/Formula/node.rb #然后通过git 切换分支
+* 最后安装 brew install node
+* 原帖看[点击这里](https://coderwall.com/p/lqphzg)
+
+
+### dyld: Library not loaded: /usr/local/lib/libpng15.15.dylib
+* brew info libpng #查看当前的软件版本信息
+* brew switch libpng 1.5.18 #切换对应的版本
+* 原帖看[点击这里](http://my.oschina.net/zhjx922/blog/220736)

@@ -1,0 +1,53 @@
+---
+layout: post
+title: '关于phpwind敏感词模糊匹配的修改方法'
+date: 2012-4-20
+wordpress_id: 616
+permalink: /blogs/616
+comments: true
+---
+phpwind的敏感词过滤模块感觉不太靠谱，基本用空格，其它字符就很容易破解，参考了discuz，修改了phpwind敏感词过滤模块代码，支持模糊匹配；
+修改文件lib/filter/filterutil.class.php 注释原来的match方法，替换如下方法，原始方法大概看下，应该是PW自己发明的算法，感觉不好使，改用了正则匹配，修改前记得备份。
+使用方法：比如要匹配“军车”，可以这么用，敏感词写入“军{2}车”,那么类似“军XX车”的字符都能被匹配到，具体可参考discuz.测试版本：phpwind 8.5优化版。猜测8.0-8.7应该都适用
+
+{% highlight php %}
+<?php
+	function match($ifUppCase,$s) {
+    	$ret = array();
+        include_once(D_P."data/bbscache/wordsfb.php");
+        $replacedb = $wordsfb + $replace + $alarm;
+
+        //clear html &nbsp; and fix charset
+        $s = str_replace( "&nbsp;", " ",$s);
+     	$s = iconv("gbk","utf-8//IGNORE",$s);
+
+        if ($replacedb) {
+
+            foreach ($replacedb as $key => $value) {
+            	$tmp_key =  $key;
+
+            	$key = stripcslashes($key);
+            	$key = preg_replace("/\\\{(\d+)\\\}/", ".{0,\\1}",preg_quote($key, '/'));
+            	$key = iconv("gbk","utf-8//IGNORE",$key);
+
+                $result  = preg_match_all("/($key)/i",$s,$match);
+
+                if($result){
+                	$ret[0] = iconv("utf-8","gbk//IGNORE",$match[0][0]);
+
+                	$words_type =  array('wordsfb' =>1,'replace' => 0.8,'alarm' => 0.6);
+                	foreach ($words_type as $w_type => $w_weight) {
+                		if(array_key_exists($tmp_key,$$w_type))
+                			$ret[1] = $w_weight;
+                	}
+
+                	$ret = array($ret);
+                }
+
+            }
+        }
+
+        return $ret;
+	}
+?>    
+{% endhighlight %}    

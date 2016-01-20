@@ -1,0 +1,15 @@
+---
+layout: post
+title: "mysql date 0000-00-00 现象分析"
+date: 2013-12-11 10:34
+comments: true
+categories: 
+---
+
+问题描述：mysql date字段数据写入的时候产生"0000-00-00"这种格式
+
+原因分析：
+The only reason what i can find is either your client has entered improper date format or he has entered an empty string. Remember the date format in Mysql is yyyy-mm-dd.
+可能是因为插入格式不正确的日期或空字符串，例如生日字段，要求格式是1980-10-10这样的格式，实际写入的时候变成了10-10，或者10月10日这样，那就会产生这种现象。
+
+见：[http://stackoverflow.com/questions/14215331/php-mysql-date-saved-as-0000-00-00](http://stackoverflow.com/questions/14215331/php-mysql-date-saved-as-0000-00-00)

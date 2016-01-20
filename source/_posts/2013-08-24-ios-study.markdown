@@ -1,0 +1,41 @@
+---
+layout: post
+title: "ios学习资料整理"
+date: 2013-08-24 15:39
+comments: true
+categories: ios
+---
+
+最近开始入手ios开发，尽管ios现在已经都发展到7了，不过只要最近想学，我觉得无论何时都不晚。
+
+### 视频连接
+* 传智播客 [http://ios.itcast.cn/#shipin](http://ios.itcast.cn/#shipin) 讲的比较不错，就是看视频比较花时间
+
+* 斯坦福公开课 [http://v.163.com/special/opencourse/ipadandiphoneapplication.html](http://v.163.com/special/opencourse/ipadandiphoneapplication.html)
+好像有中文字幕
+
+### 文档资料
+
+* [https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/chapters/Introduction.html#//apple_ref/doc/uid/TP40012668](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOSCh/chapters/Introduction.html#//apple_ref/doc/uid/TP40012668)
+apple 官方ios开发流程说明，可以事先了解下大致流程；
+
+* [https://developer.apple.com/library/ios/referencelibrary/GettingStarted/Learning_Objective-C_A_Primer/](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/Learning_Objective-C_A_Primer/) oc的语法知识点，官方文档；
+
+* [http://www.otierney.net/objective-c.html.zh-tw.big5](http://www.otierney.net/objective-c.html.zh-tw.big5) 主要是讲一些object-c的语法知识点，中文；
+
+* [http://www.cnblogs.com/mjios/](http://www.cnblogs.com/mjios/) 传智播客讲师的blog，一些知识点整理的还不错，讲得不错的；
+
+* [http://www.raywenderlich.com/](http://www.raywenderlich.com/) 英文通俗易懂，有些带中文翻译的，照里面的教程自己可以写一些小应用；
+
+* [http://www.cocoachina.com/special/fornew.html](http://www.cocoachina.com/special/fornew.html) 国内著名的社区
+
+* [http://www.appsamuck.com/](http://www.appsamuck.com/) 31个小例子学习，资料有点老，不过还可以参考参考；
+
+* [http://dipinkrishna.com/blog/2012/03/iphoneios-programming-login-screen-post-data-url-parses-json-response/](http://dipinkrishna.com/blog/2012/03/iphoneios-programming-login-screen-post-data-url-parses-json-response/) 通过post方式解析json的用户登录示例
+
+
+* [http://www.raywenderlich.com/1768/uiview-tutorial-for-ios-how-to-make-a-custom-uiview-in-ios-5-a-5-star-rating-view](http://www.raywenderlich.com/1768/uiview-tutorial-for-ios-how-to-make-a-custom-uiview-in-ios-5-a-5-star-rating-view) 实现一个星级评分的自定义控件
+
+* [http://www.otierney.net/objective-c.html.zh-tw.big5](http://www.otierney.net/objective-c.html.zh-tw.big5) object-c 基础语法
+
+* [http://blog.devtang.com/blog/categories/ios/](http://blog.devtang.com/blog/categories/ios/) 不错的ios blog可以浏览下
