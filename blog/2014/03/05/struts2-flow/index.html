@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> struts2执行流程学习分析 | Wikimo&#39;s Note</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="/css/main.css">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="theme-color" content="#2ecc71">
+<link rel="canonical" href="http://wikimo.net/blog/2014/03/05/struts2-flow/">
+<link rel="alternate" type="application/rss+xml" title="Wikimo's Note" href="http://wikimo.net/feed.xml" />
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="single">
+    <main class="container">
+        <header class="site-header">
+  <div class="container txt-center">
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">home</a></li>
+        <li class="divider">&bull;</li>
+        <li><a href="/about">about</a></li>
+        <li class="divider">&bull;</li>
+        <li><a href="/feed.xml" target="_blank"><i class="icon icon-feed"></i> feed</a></li>
+      </ul>
+    </nav>
+    <a href="/" class="author-thumb">
+      <img src="/images/author.jpg" alt="Author thumbnail" class="dot">
+    </a>
+    <h1>Hi, I'm wikimo <small>me.each do |devel| … !end.</small></h1>
+    <hr class="hr">
+  </div>
+</header>
+        <section class="main-content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">struts2执行流程学习分析</h1>
+    <p class="post-meta">Mar 5, 2014</p>
+  </header>
+  <div class="post-content">
+    <h4 id="struts2-version-238httpstrutsapacheorgrelease23xstruts2-coreapidocs">版本说明： <a href="http://struts.apache.org/release/2.3.x/struts2-core/apidocs/">struts2 version: 2.3.8</a></h4>
+<hr />
+<h2 id="section">部分代码分析</h2>
+<h3 id="struts2">Struts2部分</h3>
+<h4 id="actionmapper">ActionMapper</h4>
+<ul>
+  <li>
+    <p>package: org.apache.struts2.dispatcher.mapper</p>
+  </li>
+  <li>
+    <p>类型：是一个接口；</p>
+  </li>
+  <li>
+    <p>作用：http requests和action之间的建立关系，映射；</p>
+  </li>
+  <li>
+    <p>分析：通过传递request，actionName，actionMapping等参数信息，对应可返回ActionMapping，或者从ActionMapping返回请求的uri；</p>
+  </li>
+</ul>
+<h4 id="actionmapping">ActionMapping</h4>
+<ul>
+  <li>
+    <p>package:org.apache.struts2.dispatcher.mapper</p>
+  </li>
+  <li>
+    <p>类型：类</p>
+  </li>
+  <li>
+    <p>作用：包含action mapping的信息；</p>
+  </li>
+  <li>
+    <p>分析：含namespace,action的name,对应调用action的method方法，同时维护了一个Map，用于存放请求参数，还有个extension参数，初步推测可能是指定请求的扩展名，如.do,.action，基本情况就是一个java bean充满了get set方法；</p>
+  </li>
+</ul>
+<hr />
+<h3 id="xwork">XWORK部分</h3>
+<h4 id="action">Action</h4>
+<ul>
+  <li>
+    <p>package:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：接口</p>
+  </li>
+  <li>
+    <p>作用：每个Action都需要实现此接口，并暴露execute方法；</p>
+  </li>
+  <li>
+    <p>分析：主要是实现一个execute方法，并带了一些常量；</p>
+  </li>
+</ul>
+<h4 id="actioncontext">ActionContext</h4>
+<ul>
+  <li>
+    <p>package:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：类</p>
+  </li>
+  <li>
+    <p>作用：是一个执行Action的Context（上下文）；</p>
+  </li>
+  <li>
+    <p>分析：每个context类似一个容器，实际上是一个Map，包含了很多action执行时需要的对象，类似session，请求参数，本地化信息，同时，ActionContext是通过thread local实现的，保证当前线程中是唯一的，无需担心Action线程安全问题；</p>
+  </li>
+</ul>
+<h4 id="actioninvocation">ActionInvocation</h4>
+<ul>
+  <li>
+    <p>package:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：接口</p>
+  </li>
+  <li>
+    <p>作用：代表了Action执行的状态，拥有拦截器和Action的实例；</p>
+  </li>
+  <li>
+    <p>分析：通过ActionProxy进行初始化，然后连续地调用invoke方法，执行顺序是所有的拦截器，Action，最后是Result。</p>
+  </li>
+</ul>
+<h4 id="actionproxy">ActionProxy</h4>
+<ul>
+  <li>
+    <p>package:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：接口</p>
+  </li>
+  <li>
+    <p>作用：介于XWork和Action之间一个额外的层，同时，可实现不同的Proxy</p>
+  </li>
+  <li>
+    <p>分析：Action的代理，通过内置的一些方法，可得到很多Action相关的信息，得到Action，ActionName，Action配置，执行的一些情况；</p>
+  </li>
+</ul>
+<h4 id="actionsupport">ActionSupport</h4>
+<ul>
+  <li>
+    <p>pacage:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：类</p>
+  </li>
+  <li>
+    <p>作用：提供了普通action的统一实现</p>
+  </li>
+  <li>
+    <p>分析：实现了Action接口，一些验证接口，本地化等方法，详细参见源码；</p>
+  </li>
+</ul>
+<h4 id="result">Result</h4>
+<ul>
+  <li>
+    <p>package:com.opensymphony.xwork2</p>
+  </li>
+  <li>
+    <p>类型：接口</p>
+  </li>
+  <li>
+    <p>作用：Action的执行结果，会映射一个View的实现；</p>
+  </li>
+  <li>
+    <p>分析：Views的方式有swingpanel，另一个action，http重定向，分发另一个http的url</p>
+  </li>
+</ul>
+<hr />
+<h2 id="section-1">执行流程分析</h2>
+<ul>
+  <li>
+    <p>以StrutsPrepareAndExecuteFilter过滤器为例</p>
+  </li>
+  <li>
+    <p>package:org.apache.struts2.dispatcher.ng.filter</p>
+  </li>
+  <li>
+    <p>核心方法doFilter</p>
+  </li>
+  <li>
+    <p>首先做一些预处理，编码，本地化，ActionContext等；</p>
+  </li>
+  <li>
+    <p>对请求路径判断处理；</p>
+  </li>
+  <li>
+    <p>如果请求路径符合要求，查找ActionMapping对象，ActionMapping对象是通过ActionMapper的getMapping方法得到的，ActionMapper是通过dispatcher的container中进行注入的，如果返回null，作静态资源处理，否则执行相应的action；</p>
+  </li>
+  <li>
+    <p>最终会清理request;</p>
+  </li>
+  <li>
+    <p>关于详细的执行流程，<a href="http://blog.csdn.net/legendj/article/details/9790647">参考这里</a>，给出较为详细的执行流行分析，另可参考该文章中执行流程图；</p>
+  </li>
+  <li>
+    <p>个人对于struts2流程的理解图
+<img src="http://pic.yupoo.com/wikimo/DAdGdInU/medium.jpg" alt="struts2-flow" /></p>
+  </li>
+</ul>
+    <aside class="share">
+      <span>Share this: </span>
+      <a href="http://twitter.com/share?text=struts2执行流程学习分析&amp;url=http://wikimo.net/blog/2014/03/05/struts2-flow/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="icon icon-twitter-rounded"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://wikimo.net/blog/2014/03/05/struts2-flow/"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="icon icon-facebook-rounded"></i>
+      </a>
+    </aside>
+  </div>
+  <!-- 
+  <hr>
+  <aside id="comments" class="disqus">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = '';
+      var disqus_identifier = '/blog/2014/03/05/struts2-flow';
+      var disqus_title = 'struts2执行流程学习分析';
+      var disqus_url = 'http://wikimo.net';
+      /*var disqus_developer = 1;*/
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+  </aside>
+ -->
+</article>
+        </section>
+<div class="clearfix"></div>
+<footer class="site-footer txt-center">
+  <hr>
+  <ul class="social">
+        <li><a href="" target="_blank"><i class="icon icon-"></i></a></li>
+        <li><a href="http://github.com/wikimo" target="_blank"><i class="icon icon-github"></i></a></li>
+        <li><a href="" target="_blank"><i class="icon icon-"></i></a></li>
+        <li><a href="http://twitter.com/gwikimo" target="_blank"><i class="icon icon-twitter"></i></a></li>
+  </ul>
+  <small>&copy; 2016 All rights reserved. </small>
+</footer>
+    </main>
+    <a href="https://github.com/wikimo" target="_blank" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#2ecc71; color:#f7f8f9; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  </body>
+</html>

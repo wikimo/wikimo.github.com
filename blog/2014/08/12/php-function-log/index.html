@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> php-function-log | Wikimo&#39;s Note</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="/css/main.css">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="theme-color" content="#2ecc71">
+<link rel="canonical" href="http://wikimo.net/blog/2014/08/12/php-function-log/">
+<link rel="alternate" type="application/rss+xml" title="Wikimo's Note" href="http://wikimo.net/feed.xml" />
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="single">
+    <main class="container">
+        <header class="site-header">
+  <div class="container txt-center">
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">home</a></li>
+        <li class="divider">&bull;</li>
+        <li><a href="/about">about</a></li>
+        <li class="divider">&bull;</li>
+        <li><a href="/feed.xml" target="_blank"><i class="icon icon-feed"></i> feed</a></li>
+      </ul>
+    </nav>
+    <a href="/" class="author-thumb">
+      <img src="/images/author.jpg" alt="Author thumbnail" class="dot">
+    </a>
+    <h1>Hi, I'm wikimo <small>me.each do |devel| … !end.</small></h1>
+    <hr class="hr">
+  </div>
+</header>
+        <section class="main-content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">php-function-log</h1>
+    <p class="post-meta">Aug 12, 2014</p>
+  </header>
+  <div class="post-content">
+    <h3 id="section">正则表达式</h3>
+<ol>
+  <li>任意字符匹配</li>
+</ol>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">#温　度：25~30°风　向匹配结果，将25~30°取出</span>
+<span class="x">#(.*)匹配任意字符</span>
+<span class="x"> preg_match(&#39;/温　度：(.*)风　向/&#39;,$weather_str,$match);</span>
+<span class="x">var_dump($match);</span></code></pre></div>
+<ol>
+  <li>
+    <p>大括号，小括号，中括号（方括号）的作用</p>
+    <ul>
+      <li>
+        <p>大括号 重复次数，一般{n,m}重复次数最少n,最多m，{n} 重复n次，{n,}重复n次或更多；</p>
+      </li>
+      <li>小括号，分组</li>
+      <li>方括号 匹配里面的任意字符；</li>
+    </ul>
+  </li>
+  <li>
+    <p>贪婪匹配与懒惰匹配</p>
+  </li>
+</ol>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$str = &quot;21&quot;;</span>
+<span class="x">#匹配21，贪婪</span>
+<span class="x">preg_match(&#39;/[123].*/&#39;,$str,$match);</span>
+<span class="x">#匹配2，懒惰</span>
+<span class="x">#preg_match(&#39;/[123].*?/&#39;,$str,$match);</span>
+<span class="x">var_dump($match);</span>
+<span class="x">&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;4. 问号&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 贪婪匹配&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 匹配问号本身，前面需要加\&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 出现0次或一次 \(?0\d{2}[) -]?\d{8}，匹配电话号码，像(010)88886666，或022-22334455，或02912345678&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 不捕捉模式，啥意思 &amp;#39;?:&amp;#39;&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;5. 元字符&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 点 查找单个字符，除了换行和行结束符&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * \w 匹配字母或数字或下划线或汉字 (大写相反，以下相同)&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * \s 匹配任意的空白符&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * \d 匹配数值&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * \b 匹配单词的开始或结束&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * ^ 匹配字符串的开始 [^x]匹配除了x以外的任意字符&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * $ 匹配字符串的结束    &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;6. 分支条件 &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    * 用 “|”分割；    &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;    &lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;[参考文章](http://deerchao.net/tutorials/regex/regex.htm)&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;---&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;###字符串替换&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [str_replace](http://www.w3school.com.cn/php/func_string_str_replace.asp) //字符串替换&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [stripos](http://www.w3school.com.cn/php/func_string_stripos.asp) //查找字符串位置&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [ucfirst](http://www.w3school.com.cn/php/func_string_ucfirst.asp) //首单词字母大写&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [ucwords](http://www.w3school.com.cn/php/func_string_ucwords.asp) //单词首字母大写&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [wordwrap](http://www.w3school.com.cn/php/func_string_wordwrap.asp) //指定换行&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;---&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;###字符数组转换&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [explode](http://www.w3school.com.cn/php/func_string_explode.asp)(separator,string,limit) #字符串分割成数组；&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;* [implode](http://www.w3school.com.cn/php/func_string_implode.asp)(separator,array) #数组合并为字符串；&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;---&lt;/span&gt;</span>
+<span class="x">&lt;span class=&quot;x&quot;&gt;###数组分割并赋值&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</span>
+<span class="x">##分割字符串并复制给变量$a,$b,$c</span>
+<span class="x">$my_array = array(&quot;Dog&quot;,&quot;Cat&quot;,&quot;Horse&quot;);</span>
+<span class="x">list($a, $b, $c) = $my_array;</span></code></pre></div>
+<hr />
+<h3 id="section-1">特定字符前加斜杠</h3>
+<ul>
+  <li><a href="http://www.w3school.com.cn/php/func_string_addcslashes.asp">addcslashes</a></li>
+  <li><a href="http://www.w3school.com.cn/php/func_string_stripcslashes.asp">stripcslashes</a></li>
+</ul>
+<hr />
+<h3 id="html">HTML与字符转换</h3>
+<ul>
+  <li><a href="http://www.w3school.com.cn/php/func_string_html_entity_decode.asp">html_entity_decode</a> 把 HTML 实体转换为字符</li>
+  <li><a href="http://www.w3school.com.cn/php/func_string_htmlentities.asp">htmlentities</a> 把字符转换为 HTML 实体</li>
+  <li><a href="http://www.w3school.com.cn/php/ func_string_htmlspecialchars_decode.asp">htmlspecialchars_decode</a> 把一些预定义的 HTML 实体转换为字符</li>
+  <li><a href="http://www.w3school.com.cn/php/func_string_htmlspecialchars.asp">htmlspecialchars</a> 把一些预定义的字符转换为 HTML 实体</li>
+  <li><a href="http://www.w3school.com.cn/php/func_string_nl2br.asp">nl2br</a> 换行符-&gt;br</li>
+  <li><a href="http://www.w3school.com.cn/php/func_string_strip_tags.asp">strip_tags</a> 去除 HTML、XML 以及 PHP 标签</li>
+</ul>
+<hr />
+<h3 id="w3school">其它常用函数参考(来源：w3school)</h3>
+<ul>
+  <li><a href="http://www.w3school.com.cn/php/php_ref_array.asp">Array</a></li>
+  <li><a href="http://www.w3school.com.cn/php/php_ref_date.asp">Date</a></li>
+  <li><a href="http://www.w3school.com.cn/php/php_ref_directory.asp">Directory</a></li>
+  <li><a href="http://www.w3school.com.cn/php/php_ref_string.asp">String</a></li>
+</ul>
+    <aside class="share">
+      <span>Share this: </span>
+      <a href="http://twitter.com/share?text=php-function-log&amp;url=http://wikimo.net/blog/2014/08/12/php-function-log/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="icon icon-twitter-rounded"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://wikimo.net/blog/2014/08/12/php-function-log/"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="icon icon-facebook-rounded"></i>
+      </a>
+    </aside>
+  </div>
+  <!-- 
+  <hr>
+  <aside id="comments" class="disqus">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = '';
+      var disqus_identifier = '/blog/2014/08/12/php-function-log';
+      var disqus_title = 'php-function-log';
+      var disqus_url = 'http://wikimo.net';
+      /*var disqus_developer = 1;*/
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+  </aside>
+ -->
+</article>
+        </section>
+<div class="clearfix"></div>
+<footer class="site-footer txt-center">
+  <hr>
+  <ul class="social">
+        <li><a href="" target="_blank"><i class="icon icon-"></i></a></li>
+        <li><a href="http://github.com/wikimo" target="_blank"><i class="icon icon-github"></i></a></li>
+        <li><a href="" target="_blank"><i class="icon icon-"></i></a></li>
+        <li><a href="http://twitter.com/gwikimo" target="_blank"><i class="icon icon-twitter"></i></a></li>
+  </ul>
+  <small>&copy; 2016 All rights reserved. </small>
+</footer>
+    </main>
+    <a href="https://github.com/wikimo" target="_blank" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#2ecc71; color:#f7f8f9; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  </body>
+</html>
